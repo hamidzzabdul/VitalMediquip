@@ -1,0 +1,33 @@
+@import "../../Styles/variables";
+
+.side-bar {
+  width: 250px;
+  height: 100vh;
+  background-color: #fff;
+  position: fixed;
+  right: -300px;
+  z-index: 9999999;
+  transition: right 300ms ease;
+
+  &.active {
+    right: 0;
+  }
+
+  @media (max-width: 745px) {
+    display: block;
+  }
+  ul {
+    // color: #fff;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    padding-top: 1rem;
+    li {
+      padding: 1rem 2rem;
+      border-bottom: 1px solid $primaryGreenColor;
+      cursor: pointer;
+      border-bottom: 1px solid #c4c4c47b;
+    }
+  }
+}

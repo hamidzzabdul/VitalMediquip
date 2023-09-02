@@ -1,0 +1,77 @@
+@import "../../Styles/variables";
+
+.trending-container {
+  margin-top: 4rem;
+
+  .trending-carousel {
+    height: 250px;
+
+    .react-multiple-carousel__arrow {
+      z-index: 1;
+      &:hover {
+        background-color: $primaryGreenColor;
+        color: #fff;
+      }
+    }
+
+    .single-caraousel {
+      width: 90%;
+      height: 200px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 1rem;
+      box-shadow: 0px 4px 10px 2px rgba(0, 0, 0, 0.08);
+      cursor: pointer;
+      img {
+        width: 150px;
+        height: 150px;
+        object-fit: cover;
+      }
+
+      .product-description {
+        display: flex;
+        flex-direction: column;
+        gap: 0.8rem;
+        .category {
+          color: $textColor;
+          font-size: 0.875rem;
+        }
+
+        .name {
+          font-size: 0.875rem;
+          line-height: 1.5rem;
+        }
+
+        .read-more-btn {
+          width: 110px;
+          border: 2px solid $primaryGreenColor;
+          background-color: #fff;
+          padding: 0.4rem;
+          margin-top: 5px;
+          font-size: 0.875rem;
+          cursor: pointer;
+          transition: all 300ms ease;
+          &:hover {
+            background-color: $primaryGreenColor;
+            color: #fff;
+          }
+        }
+      }
+    }
+    .custom-dot {
+      width: 10px;
+      height: 10px;
+      background-color: #ccc;
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+      margin: 0 5px;
+      transition: background-color 0.3s ease;
+    }
+
+    .custom-dot.active {
+      background-color: $primaryGreenColor;
+    }
+  }
+}

@@ -1,0 +1,21 @@
+// NavigationBar.module.scss (or your SCSS file)
+@import "../../Styles/variables";
+
+.navigation-routes {
+  a {
+    text-transform: capitalize;
+    transition: color 300ms ease;
+    font-size: 1.1rem;
+
+    &:hover {
+      color: $primaryGreenColor;
+    }
+  }
+  .active {
+    color: $primaryGreenColor;
+  }
+
+  span {
+    color: $primaryGreenColor;
+  }
+}
