@@ -8,9 +8,11 @@
   right: -300px;
   z-index: 9999999;
   transition: right 300ms ease;
+  display: none;
 
   &.active {
     right: 0;
+    display: block;
   }
 
   @media (max-width: 745px) {

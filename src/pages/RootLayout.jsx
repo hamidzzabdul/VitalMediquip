@@ -6,6 +6,7 @@ import Navigation from "../Components/Common/Navigation"
 import Footer from "../Components/Homepage/Footer"
 import GetQuote from "../Components/Common/GetQuote"
 import SideBar from '../Components/Common/sideBar'
+import Whatsapp from '../Components/UI/Whatsapp';
 
 
 const RootLayout = () => {
@@ -38,6 +39,7 @@ const RootLayout = () => {
             <Navigation onShowForm={showFormHandler} onShowSide={handleShowSideMenu} onCloseSide={handleCloseSideMenu} />
             {formIsShown && <GetQuote onClose={closeFormHandler} />}
             <main >
+                <Whatsapp />
                 {ShowSideMenu && <SideBar className="active" />}
                 {navigation.state === "loading" &&
                     <ScaleLoader

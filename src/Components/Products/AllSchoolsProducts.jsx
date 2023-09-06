@@ -37,7 +37,6 @@ const AllSchoolsProducts = () => {
         setCurrentPage(selected);
     };
 
-    console.log(products.data)
     const paginatedProducts = filteredProducts.slice(offset, offset + ITEMS_PER_PAGE);
     const handleOnscroll = () => {
         window.scrollTo({
@@ -54,7 +53,7 @@ const AllSchoolsProducts = () => {
                 return <NavLink key={obj._id} to={subCategoryName === "unKnown Category" ?
                     `/allProducts/${categoryName}/all/${obj.name}`
                     :
-                    `/allProducts/${categoryName}/${subCategoryName}/${obj.name}`}>
+                    `/allProducts/${categoryName}/${subCategoryName}/${obj.name}`} target="_blank" rel="noopener noreferrer">
                     <div className='products-container'>
                         <img src={Sub1} alt="microscope" />
                         <div className="product-details">

@@ -3,18 +3,15 @@ const WhoWeServe = () => {
     return (
         <div className='clients-section'>
             <h2>Who we serve</h2>
-            <p>At VitalMediQuip, Our mission is to ensure that healthcare professionals have access to essential tools.</p>
+            <p>Discover our diverse clientele and industries</p>
             <ul className="clients">
-                <li>Hospital</li>
-                <li>Universities</li>
-                <li>School</li>
-                <li>Hotels</li>
+                <li>Supermarkets/stores</li>
+                <li>Hospitals</li>
                 <li>Clinics</li>
-                <li>Doctors</li>
-                <li>Doctors</li>
-                <li>School</li>
-                <li>Doctors</li>
-                <li>Clinics</li>
+                <li>Laboratories</li>
+                <li>Hospitality/HORECA</li>
+                <li>Schools,colleges,Univeristy</li>
+                <li>Industries</li>
             </ul>
         </div>
     )

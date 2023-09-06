@@ -17,12 +17,12 @@ const Hero = () => {
                     We offer a wide range of healthcare solutions for medical needs, including laboratory, surgical, dental,
                     imaging, theater, physiotherapy, maternity, as well as machine services and maintenance.
                 </p>
-                <NavLink to="/contact-us">
-                    <button className="get-in-touch">
+                <button className="get-in-touch">
+                    <NavLink to="/contact-us" className="contact-link">
                         Order Now
                         <FaRegPaperPlane className="plane-icon" />
-                    </button>
-                </NavLink>
+                    </NavLink>
+                </button>
 
                 <div className="testimonial">
                     <img src={Testimonials} alt="testimonials" />
@@ -71,7 +71,7 @@ const Hero = () => {
                     </div>
                 </div>
             </div>
-        </section>
+        </section >
     )
 }
 

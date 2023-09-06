@@ -47,8 +47,7 @@ const AllSubCategoryProducts = () => {
             {
                 paginatedProducts.map(obj => {
                     const imageUrl = `http://localhost:3000/${obj.productImage}`;
-                    console.log(obj)
-                    return <NavLink key={obj._id} to={`/allProducts/${selectedCategory.slug}/${selectedSubCategory.slug}/${obj.slug}`}>
+                    return <NavLink key={obj._id} to={`/allProducts/${selectedCategory.slug}/${selectedSubCategory.slug}/${obj.slug}`} target="_blank" rel="noopener noreferrer">
                         <div className='products-container'>
                             <img src={imageUrl} alt="microscope" />
                             <div className="product-details">

@@ -1,5 +1,5 @@
-import { Suspense, useEffect, useState } from "react"
-import { Await, defer, json, useLoaderData, useRouteLoaderData } from "react-router-dom"
+import { Suspense, } from "react"
+import { Await, defer, json, useRouteLoaderData } from "react-router-dom"
 import Products from "../Components/Products/Products"
 import EnquireProvider from "../store/EnquireContextProvider"
 

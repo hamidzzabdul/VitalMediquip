@@ -1,4 +1,5 @@
 @import "../../../Styles/variables";
+
 .related-container {
   margin-top: 70px;
   .related-wrapper {
@@ -37,9 +38,10 @@
         place-items: center;
         background-color: #fff;
         margin-bottom: 10px;
+        overflow: hidden;
         img {
           width: 90%;
-          height: 90%;
+          height: 200px;
           object-fit: contain;
           background-color: #fff;
           transition: transform 300ms ease;

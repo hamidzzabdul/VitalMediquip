@@ -7,6 +7,17 @@
   justify-content: space-between;
   align-items: center;
   padding: 0 3rem;
+
+  @media (max-width: 530px) {
+    padding: 0 0.5rem;
+  }
+
+  @media (max-width: 420px) {
+    flex-direction: column;
+    padding: 0.5rem 0;
+    height: 4rem;
+  }
+
   .email-details {
     display: flex;
     align-items: center;

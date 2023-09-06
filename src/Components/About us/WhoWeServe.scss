@@ -9,7 +9,7 @@
   }
   p {
     text-align: center;
-    padding: 1rem 0;
+    padding-top: 1rem;
     font-size: 0.875rem;
     color: $textColor;
     width: 40%;
@@ -17,14 +17,21 @@
     line-height: 1.5rem;
   }
   .clients {
-    margin: 1rem auto;
+    margin: 0rem auto;
     display: grid;
-    grid-template-columns: repeat(5, 1fr);
+    grid-template-columns: repeat(3, 200px);
+    grid-template-rows: repeat(3, 1fr);
     gap: 1.8rem;
     width: 100%;
     padding: 1rem;
+    place-content: center;
+    & > li:nth-child(1) {
+      grid-column: 2 / 2;
+      grid-row: 3;
+    }
 
     li {
+      font-size: 0.875rem;
       display: flex;
       justify-content: center;
       align-items: center;

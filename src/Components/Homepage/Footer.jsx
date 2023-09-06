@@ -1,11 +1,11 @@
 import Contact from "./Contact"
 import "./Footer.scss"
 
-import { FaFacebookF } from "react-icons/fa"
+import { FaFacebookF, FaTwitter } from "react-icons/fa"
 import { FaInstagram } from "react-icons/fa"
 import { SlSocialTwitter } from "react-icons/sl"
 import { FaLinkedinIn } from "react-icons/fa6"
-import { NavLink } from "react-router-dom"
+import { Link, NavLink } from "react-router-dom"
 import Logo from "../../../public/logo.svg"
 
 
@@ -13,7 +13,8 @@ const Footer = () => {
 
     const handleOnclick = () => {
         window.scrollTo({
-            top: 0,
+            top: -100,
+            behavior: "smooth"
         })
     }
     return (
@@ -22,10 +23,9 @@ const Footer = () => {
             <footer>
                 <div className="footer-items">
                     <div className="logo">
-                        <NavLink to="/">
+                        <NavLink to="/" onClick={handleOnclick}>
                             <img src={Logo} alt="" />
                         </NavLink>
-                        <span>Performance , Reliability , Accuracy</span>
                         <p>Premier medical supplier for top-quality healthcare solutions.</p>
                     </div>
                     <ul className="footer-links">
@@ -80,12 +80,21 @@ const Footer = () => {
                             </ul>
                         </li>
                         <li>
-                            <h3>Service & maintainance</h3>
+                            <h3>Service & maintenance</h3>
                             <ul>
-                                <li>Laboratory machines</li>
-                                <li>Dental machines</li>
-                                <li>Theatre & ICU machines</li>
-                                <li>Radiology machines</li>
+                                <li>
+                                    <NavLink to="/allproducts/services-&-maintenace">Laboratory machines</NavLink>
+                                </li>
+                                <li>
+                                    <NavLink to="/allproducts/services-&-maintenace">Dental machines</NavLink>
+                                </li>
+                                <li>
+                                    <NavLink to="/allproducts/services-&-maintenace">Theatre & ICU machines</NavLink>
+
+                                </li>
+                                <li>
+                                    <NavLink to="/allproducts/services-&-maintenace">Radiology machines</NavLink>
+                                </li>
 
                             </ul>
                         </li>
@@ -93,27 +102,27 @@ const Footer = () => {
                             <h3>Quick links</h3>
                             <ul>
                                 <li>
-                                    <NavLink to="/">
+                                    <NavLink to="/" onClick={handleOnclick}>
                                         Home
                                     </NavLink>
                                 </li>
                                 <li>
-                                    <NavLink to="/about">
+                                    <NavLink to="/about" onClick={handleOnclick}>
                                         About us
                                     </NavLink>
                                 </li>
                                 <li>
-                                    <NavLink to="/products">
+                                    <NavLink to="/allproducts" onClick={handleOnclick}>
                                         Products
                                     </NavLink>
                                 </li>
                                 <li>
-                                    <NavLink to="/contact-us">
+                                    <NavLink to="/contact-us" onClick={handleOnclick}>
                                         Contacts
                                     </NavLink>
                                 </li>
                                 <li>
-                                    <NavLink to="/Faq">
+                                    <NavLink to="/faqs" onClick={handleOnclick}>
                                         FAQ
                                     </NavLink>
                                 </li>
@@ -122,27 +131,35 @@ const Footer = () => {
                         <li className="socials">
                             <h3>Get in touch</h3>
                             <ul>
-                                <li>
-                                    <FaFacebookF className="social-icon" />
-                                    <span>Facebook</span>
-                                </li>
-                                <li>
-                                    <FaInstagram className="social-icon" />
-                                    <span>instagram</span>
-                                </li>
-                                <li>
-                                    <SlSocialTwitter className="social-icon" />
-                                    <span>Twitter</span>
-                                </li>
-                                <li>
-                                    <FaLinkedinIn className="social-icon" />
-                                    <span>linkedIn</span>
-                                </li>
+                                <Link to="https://www.facebook.com/VitalMediquip/" target="_blank" rel="noopener noreferrer">
+                                    <li>
+                                        <FaFacebookF className="social-icon" />
+                                        <span>Facebook</span>
+                                    </li>
+                                </Link >
+                                <Link to="https://www.instagram.com/vital_mediquip/" target="_blank" rel="noopener noreferrer">
+                                    <li>
+                                        <FaInstagram className="social-icon" />
+                                        <span>instagram</span>
+                                    </li>
+                                </Link>
+                                <Link to="https://twitter.com/Vital_Mediquip" target="_blank" rel="noopener noreferrer">
+                                    <li>
+                                        <FaTwitter className="social-icon" />
+                                        <span>Twitter</span>
+                                    </li>
+                                </Link>
+                                <Link to="https://www.linkedin.com/company/vital-mediquip/" target="_blank" rel="noopener noreferrer">
+                                    <li>
+                                        <FaLinkedinIn className="social-icon" />
+                                        <span>LinkedIn</span>
+                                    </li>
+                                </Link>
                             </ul>
                         </li>
                     </ul>
-                </div>
-            </footer>
+                </div >
+            </footer >
             <div className="copyrights">
                 <p>Copyright © 2023 Vitalmediquip</p>
                 <p>All right Reservered Vitalmediquip</p>

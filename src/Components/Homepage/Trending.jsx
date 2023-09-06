@@ -78,7 +78,7 @@ const Trending = () => {
 
     return (
         <div className='trending-container section'>
-            <h3>Trending / New</h3>
+            <h2>Trending / New</h2>
             <Carousel
                 ref={(ref) => (carouselRef = ref)}
                 responsive={responsive}

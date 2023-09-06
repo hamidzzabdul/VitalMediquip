@@ -18,23 +18,23 @@ const BusinessHours = () => {
 
                 <div className="hours">
                     <p>Monday - Friday : 8:00 AM - 5:00 PM</p>
-                    <p>Saturday : 9:00 AM - 2:00 PM</p>
+                    <p>Saturday : 9:00 AM - 3:00 PM</p>
                     <p>Sunday : Closed</p>
                 </div>
                 <div className="social">
                     <h3>Follow us</h3>
                     <label>
 
-                        <Link to="https://www.facebook.com/VitalMediquip/" target="_blank" >
+                        <Link to="https://www.facebook.com/VitalMediquip/" target="_blank" rel="noopener noreferrer">
                             <FaFacebookF className="social-icon" />
-                        </Link>
-                        <Link>
+                        </Link >
+                        <Link to="https://www.instagram.com/vital_mediquip/" target="_blank" rel="noopener noreferrer">
                             <FaInstagram className="social-icon" />
                         </Link>
-                        <Link>
+                        <Link to="https://www.linkedin.com/company/vital-mediquip/" target="_blank" rel="noopener noreferrer">
                             <FaLinkedinIn className="social-icon" />
                         </Link>
-                        <Link>
+                        <Link to="https://twitter.com/Vital_Mediquip" target="_blank" rel="noopener noreferrer">
                             <FaTwitter className="social-icon" />
                         </Link>
                     </label>

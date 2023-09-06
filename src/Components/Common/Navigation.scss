@@ -5,7 +5,7 @@
   top: 0;
   z-index: 999;
   nav {
-    max-width: 1444px;
+    width: 100%;
     margin: 0 auto;
     height: 4.5rem;
     display: flex;
@@ -35,6 +35,10 @@
 
       @media (max-width: 860px) {
         width: 100%;
+        padding: 0 1rem;
+        .logo {
+          width: 140px;
+        }
       }
     }
 

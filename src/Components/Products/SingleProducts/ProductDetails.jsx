@@ -75,7 +75,7 @@ const ProductDetails = () => {
 
                 </div>
             </div>
-            {relatedProducts > 0 && <RelatedProducts products={relatedProducts} />}
+            {relatedProducts && <RelatedProducts products={relatedProducts} categories={categories} subCategories={subCategories} />}
         </>
     )
 }

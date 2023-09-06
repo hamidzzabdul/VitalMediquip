@@ -21,6 +21,7 @@ const Products = ({ categories, subCategories }) => {
         <>
             {showEnquire && <EnquireForm onEnquire={toggleModal} />}
             <div className="products">
+                <h1>Our Products</h1>
                 <NavRoutes />
                 <div className="products-section">
                     <Categories categories={allCategories} subCategories={allSubCategories} />

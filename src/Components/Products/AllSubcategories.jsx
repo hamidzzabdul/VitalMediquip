@@ -12,9 +12,8 @@ const AllSubcategories = () => {
     const selectedCategory = allCategories.find(cat => cat.slug === category)
 
     if (!selectedCategory) {
-        return console.log("category not found")
+        return
     }
-    // filter subcategories based on the selected category
     const filteredSubCategories = allSubCategories.filter(subcategory => subcategory.category === selectedCategory._id)
 
     return (

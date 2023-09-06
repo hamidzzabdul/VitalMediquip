@@ -23,6 +23,7 @@ const AllProducts = () => {
     const categoryMap = {}
     const subCategoryMap = {}
     const categorySlugs = {}
+    const subCategorySlugs = {}
 
 
     allCategories.forEach(category => {
@@ -35,6 +36,9 @@ const AllProducts = () => {
 
     allSubCategories.forEach(subCategory => {
         subCategoryMap[subCategory._id] = subCategory.name
+    })
+    allSubCategories.forEach(subCategory => {
+        subCategorySlugs[subCategory._id] = subCategory.slug
     })
 
     const [currentPage, setCurrentPage] = useState(0);
@@ -91,6 +95,7 @@ const AllProducts = () => {
                     {filteredProduct.map(product => {
                         const categoryName = categoryMap[product.category] || "unkown Category"
                         const subCategoryName = subCategoryMap[product.subCategory] || "unKnown Category"
+
                         const imageUrl = `http://localhost:3000/${product.productImage}`;
 
                         return (
@@ -100,8 +105,8 @@ const AllProducts = () => {
                                 <NavLink key={product._id} to={subCategoryName === "unKnown Category" ?
                                     `/allProducts/${categorySlugs[product.category]}/all/${product.slug}`
                                     :
-                                    `/allProducts/${categorySlugs[product.category]}/${subCategoryName}/${product.slug}`}
-                                    className="all-products-container">
+                                    `/allProducts/${categorySlugs[product.category]}/${subCategorySlugs[product.subCategory]}/${product.slug}`}
+                                    className="all-products-container" target="_blank" rel="noopener noreferrer">
                                     <div className="product-image">
                                         <img src={imageUrl} alt="microscope" />
                                     </div>

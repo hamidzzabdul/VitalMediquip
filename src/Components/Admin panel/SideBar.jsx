@@ -9,6 +9,7 @@ const Sidebar = () => {
                     <div className="items">
                         <NavLink to="/admin">Add Products</NavLink>
                         <NavLink to="/admin/add-categories">Add Categories </NavLink>
+                        <NavLink to="/admin/edit">Edit & Delete products</NavLink>
                         <NavLink to="/admin/add-sub-categories">Add Subcategories</NavLink>
                     </div>
                 </li>

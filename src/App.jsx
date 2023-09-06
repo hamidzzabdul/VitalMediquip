@@ -23,12 +23,17 @@ import AddSubCategories from "./Components/Admin panel/features/AddSubCategories
 import AllCategoryProducts from "./Components/Products/AllCategoryProucts"
 import NoSubDetails from "./Components/Products/SingleProducts/NoSubDetails"
 import AllSchoolsProducts from "./Components/Products/AllSchoolsProducts"
+import Services from "./Components/Products/Services"
+import EditProducts from "./Components/Admin panel/features/EditProducts"
+import EditProductPage from "./pages/Admin/EditProductPage"
 
-
+import { action as ProductUpdate } from "./Components/Admin panel/features/SingleProductEdit"
 const router = createBrowserRouter([
   {
     path: "/admin",
     element: <AdminPage />,
+    id: "product-loader",
+    loader: LoadedProducts,
     children: [
       {
         index: true,
@@ -46,6 +51,16 @@ const router = createBrowserRouter([
         loader: LoadedProducts,
         element: <AddSubCategories />,
         action: AddSubCategoryAction
+      },
+      {
+        path: "/admin/edit",
+        loader: LoadedProducts,
+        element: <EditProducts />,
+      },
+      {
+        path: "/admin/edit/:id",
+        element: <EditProductPage />,
+        action: ProductUpdate
       }
     ]
   },
@@ -67,6 +82,10 @@ const router = createBrowserRouter([
             index: true,
             element: <AllProducts />,
             loader: LoadedProducts,
+          },
+          {
+            path: "allproducts/services-&-maitenance",
+            element: <Services />
           },
           {
             path: "/allProducts/:category",
@@ -102,7 +121,7 @@ const router = createBrowserRouter([
             path: "/allProducts/:category/:subCategory/:name",
             element: <ProductDetails />,
             loader: LoadedProducts
-          }
+          },
         ]
       },
       {

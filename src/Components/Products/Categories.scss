@@ -41,8 +41,8 @@
         color: $primaryGreenColor;
         padding-left: 7px;
       }
-
-      .active {
+      &.active {
+        color: red;
         color: $primaryGreenColor;
         padding-left: 7px;
       }

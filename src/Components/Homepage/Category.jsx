@@ -34,7 +34,7 @@ const Category = () => {
                 <NavLink to="/allProducts/general-hospital" className="category" onClick={handleOnClick}>
                     <img src={Medical} alt="lab-img" />
                     <div className="des">
-                        <h3>Hospital</h3>
+                        <h3>General Hospital</h3>
                         <label>
                             <BsFillArrowRightCircleFill className="cat-icon" />
                             <p>Browse</p>
@@ -54,7 +54,7 @@ const Category = () => {
                 <NavLink to="/allProducts/Services-and-Maintainance" className="category">
                     <img src={Services} alt="lab-img" />
                     <div className="des">
-                        <h3>Services</h3>
+                        <h3>Services & maintenance</h3>
                         <label>
                             <BsFillArrowRightCircleFill className="cat-icon" />
                             <p>Browse</p>
@@ -63,7 +63,7 @@ const Category = () => {
                 </NavLink>
             </div>
 
-            <Link className="other-cat-link">See more <AiOutlineArrowRight /></Link>
+            <Link className="other-cat-link" to='/allproducts'>See more <AiOutlineArrowRight /></Link>
         </div >
     )
 }

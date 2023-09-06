@@ -1,8 +1,8 @@
 @import "../../Styles/variables";
 
 .begining {
-  width: 90%;
-  margin: 7rem 0;
+  width: 80%;
+  margin: 7rem auto;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 2rem;
@@ -12,7 +12,7 @@
   }
   .ceo-img {
     width: 100%;
-    height: 300px;
+    height: 370px;
     img {
       width: 100%;
       height: 100%;
@@ -43,7 +43,8 @@
       justify-content: right;
       font-size: 0.875rem;
       color: $textColor;
-      line-height: 2rem;
+      line-height: 1.5rem;
+      padding-bottom: 10px;
     }
   }
   @media (max-width: 675px) {
@@ -53,9 +54,9 @@
     }
 
     .begining-story {
+      padding: 0 0.5rem;
       width: 80%;
       margin: 0 auto;
-      border: 1px solid red;
     }
   }
   @media (max-width: 500px) {

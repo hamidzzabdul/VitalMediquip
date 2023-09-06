@@ -2,7 +2,6 @@ import "./AboutUs.scss"
 import History from "./History"
 import Banner from "../../assets/banner.jpg"
 import HowItBegan from "./HowItBegan"
-import Team from "../../assets/Team.jpg"
 import WhoWeServe from "./WhoWeServe"
 import Partners from "../Common/Partners"
 import { BsFillMapFill } from "react-icons/bs"
@@ -25,7 +24,7 @@ const AboutUs = () => {
                             <h2>Vision</h2>
                         </div>
                         <p>
-                            At VitalMediQuip, Our mission is to ensure that healthcare professionals have access to essential tools.
+                            Progressive leading distributor of healthcare solutions
                         </p>
                     </div>
                     <div className="mission col-1">
@@ -37,31 +36,46 @@ const AboutUs = () => {
                             <div className="line"></div>
                         </label>
                         <p>
-                            At VitalMediQuip, Our mission is to ensure that
+
+                            To provide innovative and environment friendly quality products, sustainably grow and keep our
+                            employees and client happy at the same time maximizing shareholder value.
                         </p>
                     </div>
+                </div>
 
-                    <div className="values col">
-                        <div className="heading">
-                            <IoPeople className="icon" />
-                            <h2>Core Values</h2>
-                        </div>
-                        <ul>
-                            <li>At VitalMediQuip, Our mission is to ensure that</li>
-                            <li>At VitalMediQuip, Our mission is to ensure that</li>
-                            <li>At VitalMediQuip, Our mission is to ensure that</li>
-                            <li>At VitalMediQuip, Our mission is to ensure that</li>
-                        </ul>
+
+                <div className="values col">
+                    <div className="heading">
+                        <IoPeople className="icon" />
+                        <h2>Core Values</h2>
                     </div>
+                    <ul>
+                        <li>
+                            <span>1. Integrity: </span> Always act with honesty and ethics
+
+                        </li>
+                        <li>
+                            <span>2. Morality: </span> Uphold high moral standards
+                        </li>
+                        <li>
+                            <span>3. Professionalism: </span>  Exhibit expertise and competence
+                        </li>
+                        <li>
+                            <span>4. Teamwork: </span> Collaborate for shared success.
+                        </li>
+                        <li>
+                            <span>5. Respect: </span> Value every person's dignity
+                        </li>
+                        <li>
+                            <span>6. Stewardship: </span> Responsibly manage resources and trust.
+                        </li>
+                        <li>
+                            <span>7. Equity: </span> Ensure fairness and equality.
+                        </li>
+                    </ul>
                 </div>
                 <HowItBegan />
                 <History />
-                <div className="team-members">
-                    <h2>Our Team</h2>
-                    <div className="our-team-image">
-                        <img src={Team} alt="team members" />
-                    </div>
-                </div>
                 <WhoWeServe />
                 <Partners />
             </div>

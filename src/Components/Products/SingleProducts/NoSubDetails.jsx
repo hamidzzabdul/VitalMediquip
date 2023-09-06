@@ -23,7 +23,7 @@ const NoSubDetails = () => {
     const { category, name } = useParams()
     const selectedCategory = allCategories.find(cat => cat.slug === category)
 
-    const currentProduct = products.data.data.find(product => product.name === name);
+    const currentProduct = products.data.data.find(product => product.slug === name);
 
     const product = products.data.data.filter(product => product.category === selectedCategory._id)
     const relatedProducts = product
