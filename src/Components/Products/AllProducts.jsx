@@ -1,12 +1,12 @@
 import { useState } from "react";
-import { NavLink, useLoaderData } from "react-router-dom"
+import { NavLink, useRouteLoaderData } from "react-router-dom"
+import SearchAndFilter from "../Common/SearchAndFilter";
 
-import Input from "../UI/Inputs"
 import ReactPaginate from 'react-paginate';
-import { FaSearch } from "react-icons/fa"
 import { BsArrowLeftCircleFill } from "react-icons/bs"
 import { BsFillArrowRightCircleFill } from "react-icons/bs"
-import { BsSliders } from "react-icons/bs"
+
+import { useSearch } from "../../Hooks/UseSearch";
 
 import "./AllProducts.scss"
 
@@ -15,10 +15,12 @@ const ITEMS_PER_PAGE = 8
 
 const AllProducts = () => {
 
-    const { products, categories, subCategories } = useLoaderData()
-    const allProducts = products.data.data
-    const allSubCategories = subCategories.data.data
-    const allCategories = categories.data.data
+
+    const { data } = useRouteLoaderData("root")
+    const { products, categories, subCategories } = data
+    const allProducts = products
+    const allSubCategories = subCategories
+    const allCategories = categories
 
     const categoryMap = {}
     const subCategoryMap = {}
@@ -46,13 +48,9 @@ const AllProducts = () => {
     const handlePageClick = ({ selected }) => {
         setCurrentPage(selected);
     };
+    const { searchText, handleSearch } = useSearch("");
 
-    const [searchText, setSearchText] = useState("")
-    const handleOnchange = (e) => {
-        const text = e.target.value.trim();
 
-        setSearchText(text)
-    }
     const offset = currentPage * ITEMS_PER_PAGE;
     const paginatedProducts = allProducts.slice(offset, offset + ITEMS_PER_PAGE);
 
@@ -70,58 +68,74 @@ const AllProducts = () => {
 
     return (
         <div className="all-products-section">
-            <div className="category-section">
-                <div className="search-bar">
-                    <Input type="text" placeholder="search..." onChange={handleOnchange} />
-                    <FaSearch className="search-icon" />
-                </div>
-                <div className="sort">
-                    <div className="line"></div>
-                    <select name="" id="">
-                        <option value="">Sort by</option>
-                        <option value="">New-Old</option>
-                        <option value="">Alphabetically</option>
-                    </select>
-                </div>
-                <div className="filters">
-                    <BsSliders className="icons" />
-                    <p> More Filters</p>
-                </div>
-            </div>
             <div className="all-product-wrapper">
-
+                <SearchAndFilter onSearch={handleSearch} />
                 <div className="product-wrapper">
+                    {searchText === "" ? (
+                        // Display all paginated products
+                        paginatedProducts.map(product => {
+                            const categoryName = categoryMap[product.category] || "unknown Category";
+                            const subCategoryName = subCategoryMap[product.subCategory] || "unknown Category";
+                            const imageUrl = `https://awful-erin-bandanna.cyclic.app/${product.productImage}`;
 
-                    {filteredProduct.map(product => {
-                        const categoryName = categoryMap[product.category] || "unkown Category"
-                        const subCategoryName = subCategoryMap[product.subCategory] || "unKnown Category"
-
-                        const imageUrl = `http://localhost:3000/${product.productImage}`;
-
-                        return (
-                            filteredProduct.length > 0 ?
-
-
-                                <NavLink key={product._id} to={subCategoryName === "unKnown Category" ?
-                                    `/allProducts/${categorySlugs[product.category]}/all/${product.slug}`
-                                    :
-                                    `/allProducts/${categorySlugs[product.category]}/${subCategorySlugs[product.subCategory]}/${product.slug}`}
-                                    className="all-products-container" target="_blank" rel="noopener noreferrer">
+                            return (
+                                <NavLink
+                                    key={product._id}
+                                    to={
+                                        subCategoryName === "unknown Category"
+                                            ? `/allProducts/${categorySlugs[product.category]}/all/${product.slug}`
+                                            : `/allProducts/${categorySlugs[product.category]}/${subCategorySlugs[product.subCategory]}/${product.slug}`
+                                    }
+                                    className="all-products-container"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                >
                                     <div className="product-image">
-                                        <img src={imageUrl} alt="microscope" />
+                                        <img src={imageUrl} alt="microscope" crossOrigin="anonymous" />
                                     </div>
                                     <div className="product-detail">
                                         <p className="category">{categoryName}</p>
                                         <p className="sub-category">{product.name}</p>
-                                        <button className="view-product">View product</button>
                                     </div>
                                 </NavLink>
-                                :
-                                <p>No product here 😔</p>
-                        )
-                    })}
+                            );
+                        })
+                    ) : (
+                        // Display filtered products based on the search text
+                        filteredProduct.length > 0 ? (
+                            filteredProduct.map(product => {
+                                const categoryName = categoryMap[product.category] || "unknown Category";
+                                const subCategoryName = subCategoryMap[product.subCategory] || "unknown Category";
+                                const imageUrl = `https://awful-erin-bandanna.cyclic.app/${product.productImage}`;
 
+                                return (
+                                    <NavLink
+                                        key={product._id}
+                                        to={
+                                            subCategoryName === "unknown Category"
+                                                ? `/allProducts/${categorySlugs[product.category]}/all/${product.slug}`
+                                                : `/allProducts/${categorySlugs[product.category]}/${subCategorySlugs[product.subCategory]}/${product.slug}`
+                                        }
+                                        className="all-products-container"
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                    >
+                                        <div className="product-image">
+                                            <img src={imageUrl} alt={product.name} crossOrigin="anonymous" />
+                                        </div>
+                                        <div className="product-detail">
+                                            <p className="category">{categoryName}</p>
+                                            <p className="sub-category">{product.name}</p>
+                                        </div>
+                                    </NavLink>
+                                );
+                            })
+                        ) : (
+                            <p className="nothing-found">No product with that name <br /> try <a href="/contact-us">contacting</a> us for more info</p>
+                        )
+                    )}
                 </div>
+
             </div>
             {allProducts.length > ITEMS_PER_PAGE && (
                 <div className="paginate">

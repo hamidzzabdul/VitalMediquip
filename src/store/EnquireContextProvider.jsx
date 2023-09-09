@@ -1,25 +1,38 @@
+/* eslint-disable react/prop-types */
 import { useState } from "react";
 import EnquireContext from "./EnquireContext";
 
 export const EnquireProvider = ({ children }) => {
     const [showEnquire, setShowEnquire] = useState(false);
+    const [showCategories, setShowCategories] = useState(false);
     const [selectedProduct, setSelectedProduct] = useState(null);
 
-    const toggleModal = () => {
-        setShowEnquire(prevstate => !prevstate)
-        console.log("modal closed")
-    }
+    const openEnquireModal = () => {
+        setShowEnquire(true); // Open the enquire modal
+        setShowCategories(true)
+    };
+    const openCategoriesModal = () => {
+        setShowCategories(true)
+    };
+
+    const closeModal = () => {
+        setShowEnquire(false);
+        setShowCategories(false); // Close both modals
+    };
     const selectProduct = (product) => {
-        setSelectedProduct(product),
-            toggleModal()
-    }
+        setSelectedProduct(product);
+        openEnquireModal();
+    };
 
     const contextValue = {
         showEnquire,
-        toggleModal,
+        showCategories,
+        openEnquireModal,
+        openCategoriesModal,
+        closeModal,
         selectedProduct,
-        selectProduct
-    }
+        selectProduct,
+    };
 
     return (
         <EnquireContext.Provider value={contextValue}>

@@ -1,8 +1,13 @@
 import "./Partners.scss"
-import Carousel from "react-multi-carousel";
-import "react-multi-carousel/lib/styles.css";
+
+import { Autoplay, } from 'swiper/modules';
 
 
+import 'swiper/swiper-bundle.css';
+import 'swiper/css';
+import 'swiper/css/navigation';
+
+import { Swiper, SwiperSlide } from 'swiper/react';
 import Partner1 from "../../assets/partners/1.png"
 import Partner2 from "../../assets/partners/2.png"
 import Partner3 from "../../assets/partners/3.png"
@@ -67,24 +72,7 @@ const partnerImages = [
 ]
 
 const Partners = () => {
-    const responsive = {
-        superLargeDesktop: {
-            breakpoint: { max: 4000, min: 3000 },
-            items: 5
-        },
-        desktop: {
-            breakpoint: { max: 3000, min: 1024 },
-            items: 5
-        },
-        tablet: {
-            breakpoint: { max: 1024, min: 600 },
-            items: 3
-        },
-        mobile: {
-            breakpoint: { max: 600, min: 464 },
-            items: 2
-        }
-    };
+
 
     return (
         <div className="our-partners">
@@ -132,25 +120,48 @@ const Partners = () => {
                 <h3 className="subTitle">Our partners</h3>
             </div>
             <div className="partners-img">
-                <Carousel
-                    responsive={responsive}
-                    infinite
-                    autoPlay
-                    autoPlaySpeed={3000}
-                    arrows={false}
-                    className="partner-logos"
+                <Swiper
+                    modules={[Autoplay]}
+                    spaceBetween={15}
+                    slidesPerView={1}
+                    pagination={{ clickable: true }}
+                    autoplay={{
+                        delay: 2500,
+                        disableOnInteraction: false,
+                    }}
+                    breakpoints={{
+                        950: {
+                            slidesPerView: 7,
+                        },
+                        650: {
+                            slidesPerView: 6,
+                        },
+                        500: {
+                            slidesPerView: 4,
+                        },
+                        450: {
+                            slidesPerView: 3
+                        },
+                        350: {
+                            slidesPerView: 2
+                        }
+                    }}
+                    onSlideChange={() => console.log("slide changed")}
+                    className="trending-wrapper"
                 >
 
                     {partnerImages.map(partner => {
                         return (
-                            <a href={partner.link} className={!partner.className ? "single-caraousel" : `single-caraousel ${partner.className}`} key={partner.id
-                            } target="_blank" rel="noopener noreferrer">
-                                <img src={partner.img} alt={partner.alt} />
-                            </a>
+
+                            <SwiperSlide key={partner.id} className={!partner.className ? "single-caraousel" : `single-caraousel ${partner.className}`}>
+                                <a href={partner.link} target="_blank" rel="noopener noreferrer">
+                                    <img src={partner.img} alt={partner.alt} />
+                                </a>
+                            </SwiperSlide>
                         )
                     })}
 
-                </Carousel>
+                </Swiper>
             </div>
         </div>
     )

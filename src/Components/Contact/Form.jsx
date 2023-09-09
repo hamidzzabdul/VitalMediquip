@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import { useRef, useState } from 'react';
 import emailjs from '@emailjs/browser';
 import "./Form.scss"
@@ -32,7 +33,6 @@ const Form = ({ product }) => {
                 .then((result) => {
                     toast.success('Message sent successfully'); // Show success notification
                     setIsSending(false)
-                    console.log(form.current)
                 }, (error) => {
                     toast.error('Error sending message'); // Show error notification
                 });

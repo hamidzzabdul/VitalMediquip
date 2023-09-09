@@ -17,7 +17,9 @@ const Faq = () => {
                         <h2>
                             What types of medical care and healthcare products does your company offer?
                         </h2>
-                        <BsPlusCircle className="accordion-icon" />
+                        <div className="icon">
+                            <BsPlusCircle className="accordion-icon" />
+                        </div>
                     </label>
                     <div className="content">
                         <p>We offer a wide range of medical and healthcare products, including items for laboratories, operating
@@ -34,7 +36,9 @@ const Faq = () => {
                         <h2>
                             What are your business hours?
                         </h2>
-                        <BsPlusCircle className="accordion-icon" />
+                        <div className="icon">
+                            <BsPlusCircle className="accordion-icon" />
+                        </div>
                     </label>
                     <div className="content">
                         <p>
@@ -57,7 +61,9 @@ const Faq = () => {
                         <h2>
                             Do you offer product delivery services?
                         </h2>
-                        <BsPlusCircle className="accordion-icon" />
+                        <div className="icon">
+                            <BsPlusCircle className="accordion-icon" />
+                        </div>
                     </label>
                     <div className="content">
                         <p>
@@ -73,7 +79,9 @@ const Faq = () => {
                         <h2>
                             Why aren't product prices listed on your website or your company’s documents?
                         </h2>
-                        <BsPlusCircle className="accordion-icon" />
+                        <div className="icon">
+                            <BsPlusCircle className="accordion-icon" />
+                        </div>
                     </label>
                     <div className="content">
                         <p>
@@ -93,7 +101,9 @@ const Faq = () => {
                         <h2>
                             Where can I find the prices for your products?
                         </h2>
-                        <BsPlusCircle className="accordion-icon" />
+                        <div className="icon">
+                            <BsPlusCircle className="accordion-icon" />
+                        </div>
                     </label>
                     <div className="content">
                         <p>
@@ -110,7 +120,9 @@ const Faq = () => {
                         <h2>
                             Where can I locate a product's datasheet or specifications?
                         </h2>
-                        <BsPlusCircle className="accordion-icon" />
+                        <div className="icon">
+                            <BsPlusCircle className="accordion-icon" />
+                        </div>
                     </label>
                     <div className="content">
                         <p>
@@ -125,7 +137,9 @@ const Faq = () => {
                         <h2>
                             Who should I contact if I have concerns about a product?
                         </h2>
-                        <BsPlusCircle className="accordion-icon" />
+                        <div className="icon">
+                            <BsPlusCircle className="accordion-icon" />
+                        </div>
                     </label>
                     <div className="content">
                         <p>

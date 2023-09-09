@@ -1,17 +1,28 @@
-// NavigationBar.module.scss (or your SCSS file)
 @import "../../Styles/variables";
 
 .navigation-routes {
+  @media (max-width: 630px) {
+    padding-left: 1.5rem;
+    font-size: 0.87rem;
+  }
+  @media screen and (max-width: 400px) {
+    display: none;
+  }
   a {
     text-transform: capitalize;
     transition: color 300ms ease;
-    font-size: 1.1rem;
+    font-size: 1rem;
+    @media (max-width: 800px) {
+      text-align: center;
+      font-size: 0.87rem;
+      line-height: 1.8rem;
+    }
 
     &:hover {
       color: $primaryGreenColor;
     }
   }
-  .active {
+  &.active {
     color: $primaryGreenColor;
   }
 

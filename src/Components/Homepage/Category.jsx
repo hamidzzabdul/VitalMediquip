@@ -41,7 +41,7 @@ const Category = () => {
                         </label>
                     </div>
                 </NavLink>
-                <NavLink to="/allProducts/theatre-and-icu" className="category" onClick={handleOnClick}>
+                <NavLink to="/allProducts/theatre-and-icu/all" className="category" onClick={handleOnClick}>
                     <img src={Theater} alt="theater-img" />
                     <div className="des">
                         <h3>Theater & ICU</h3>
@@ -51,7 +51,7 @@ const Category = () => {
                         </label>
                     </div>
                 </NavLink>
-                <NavLink to="/allProducts/Services-and-Maintainance" className="category">
+                <NavLink to="/allproducts/services-&-maitenance" className="category" onClick={handleOnClick}>
                     <img src={Services} alt="lab-img" />
                     <div className="des">
                         <h3>Services & maintenance</h3>

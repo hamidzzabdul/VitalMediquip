@@ -1,3 +1,4 @@
+/* eslint-disable react/no-unescaped-entities */
 import "./Faq.scss"
 import { BsPlusCircle } from "react-icons/bs"
 import Testimonials from "../../assets/testimonials.svg"
@@ -23,7 +24,9 @@ const Faq = () => {
                         <h3>
                             What types of medical care and healthcare products does your company offer?
                         </h3>
-                        <BsPlusCircle className="accordion-icon" />
+                        <div className="icon">
+                            <BsPlusCircle className="accordion-icon" />
+                        </div>
                     </label>
                     <div className="content">
                         <p>We offer a wide range of medical and healthcare products, including items for laboratories, operating
@@ -41,7 +44,9 @@ const Faq = () => {
                         <h3>
                             What are your business hours?
                         </h3>
-                        <BsPlusCircle className="accordion-icon" />
+                        <div className="icon">
+                            <BsPlusCircle className="accordion-icon" />
+                        </div>
                     </label>
                     <div className="content">
                         <p>We operate from Monday to Saturday.</p>
@@ -64,7 +69,9 @@ const Faq = () => {
                         <h3>
                             Do you offer product delivery services?
                         </h3>
-                        <BsPlusCircle className="accordion-icon" />
+                        <div className="icon">
+                            <BsPlusCircle className="accordion-icon" />
+                        </div>
                     </label>
                     <div className="content">
                         <p>
@@ -80,7 +87,9 @@ const Faq = () => {
                         <h3>
                             Why aren't product prices listed on your website or your company’s documents?
                         </h3>
-                        <BsPlusCircle className="accordion-icon" />
+                        <div className="icon">
+                            <BsPlusCircle className="accordion-icon" />
+                        </div>
                     </label>
                     <div className="content">
                         <p>

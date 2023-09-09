@@ -49,20 +49,26 @@
         font-weight: 700;
         h3 {
           font-size: 1rem;
+          @media (max-width: 530px) {
+            font-size: 0.975rem;
+          }
+          @media (max-width: 440px) {
+            font-size: 0.875rem;
+          }
+          @media (max-width: 390px) {
+            font-size: 0.775rem;
+          }
         }
 
-        @media (max-width: 530px) {
-          font-size: 0.975rem;
-        }
-        @media (max-width: 440px) {
-          font-size: 0.875rem;
-        }
-        @media (max-width: 390px) {
-          font-size: 0.775rem;
-        }
-        .accordion-icon {
-          font-size: 1.4rem;
-          cursor: pointer;
+        .icon {
+          padding: 0.5rem;
+          .accordion-icon {
+            font-size: 24px;
+            cursor: pointer;
+            @media (max-width: 440px) {
+              font-size: 1.3rem;
+            }
+          }
         }
       }
 
@@ -90,24 +96,22 @@
           font-size: 0.85rem;
           line-height: 26px;
           color: $textColor;
-
           @media (max-width: 630px) {
-            font-size: 0.875rem;
-          }
-          @media (max-width: 440px) {
-            font-size: 0.875rem;
+            font-size: 0.675rem !important;
           }
         }
         a {
           width: fit-content;
           font-size: 0.85rem;
-          // text-decoration: underline;
           border-bottom: 1px solid $primaryGreenColor;
           padding: 0;
           transition: all 300ms ease;
           color: $textColor;
           &:hover {
             color: $primaryGreenColor;
+          }
+          @media (max-width: 440px) {
+            font-size: 0.675rem !important;
           }
         }
       }

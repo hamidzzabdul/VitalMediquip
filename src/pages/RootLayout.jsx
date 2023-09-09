@@ -5,7 +5,6 @@ import ScaleLoader from "react-spinners/ScaleLoader";
 import Navigation from "../Components/Common/Navigation"
 import Footer from "../Components/Homepage/Footer"
 import GetQuote from "../Components/Common/GetQuote"
-import SideBar from '../Components/Common/sideBar'
 import Whatsapp from '../Components/UI/Whatsapp';
 
 
@@ -40,7 +39,6 @@ const RootLayout = () => {
             {formIsShown && <GetQuote onClose={closeFormHandler} />}
             <main >
                 <Whatsapp />
-                {ShowSideMenu && <SideBar className="active" />}
                 {navigation.state === "loading" &&
                     <ScaleLoader
                         className="loader"

@@ -23,7 +23,7 @@ section {
   .hero-section {
     width: 100%;
     position: absolute;
-    top: 44%;
+    top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     text-align: center;
@@ -39,31 +39,31 @@ section {
       line-height: normal;
 
       @media (max-width: 1075px) {
-        font-size: 2.3rem;
+        font-size: 2rem;
         // width: 100%;
       }
       @media (max-width: 550px) {
-        font-size: 2rem;
-      }
-      @media (max-width: 411px) {
         font-size: 1.5rem;
       }
+      // @media (max-width: 411px) {
+      //   font-size: 1.5rem;
+      // }
     }
 
     .description {
       padding: 20px;
-      width: 73%;
+      width: 70%;
       line-height: 1.8rem;
       font-size: 0.875rem;
       margin: 0 auto;
       font-weight: 700;
-
       @media (max-width: 930px) {
         width: 400px;
       }
       @media (max-width: 550px) {
-        width: 70%;
+        width: 100%;
         font-size: 0.7rem;
+        line-height: 1.5rem;
       }
       @media (max-width: 380px) {
         line-height: 1.5rem;
@@ -88,6 +88,10 @@ section {
         color: #fff;
         font-size: 1rem;
 
+        @media (max-width: 600px) {
+          padding: 0.8rem;
+        }
+
         .plane-icon {
           font-size: 1.2rem;
           fill: #fff;
@@ -98,13 +102,6 @@ section {
       &:hover {
         background-color: #151515;
       }
-      @media (max-width: 550px) {
-        font-size: 0.875rem;
-        padding: 0.8rem 1.5rem;
-        .plane-icon {
-          font-size: 1.1rem;
-        }
-      }
     }
 
     .testimonial {
@@ -114,8 +111,12 @@ section {
       justify-content: center;
       align-items: center;
       gap: 1rem;
+
       img {
         width: 100px;
+        @media (max-width: 600px) {
+          width: 60px;
+        }
       }
       p {
         display: flex;

@@ -1,44 +1,78 @@
+import { lazy, Suspense } from "react"
 import { createBrowserRouter, RouterProvider } from "react-router-dom"
 
 import RootLayout from "./pages/RootLayout"
-import HomePage from "./pages/HomePage"
-import ProductsPage from "./pages/ProductsPage"
-import ContactPage from "./pages/ContactPage"
-import AboutPage from "./pages/AboutPage"
-import Faq from "./Components/Faq/Faq"
-import AllSubcategories from "./Components/Products/AllSubcategories"
+const HomePage = lazy(() => {
+  return new Promise(resolve => {
+    setTimeout(() => resolve(import("./pages/HomePage")), 1000);
+  });
+})
+
+const ProductsPage = lazy(() => {
+  return new Promise(resolve => {
+    setTimeout(() => resolve(import("./pages/ProductsPage")), 1000);
+  });
+}
+
+)
+const ContactPage = lazy(() => {
+  return new Promise(resolve => {
+    setTimeout(() => resolve(import("./pages/ContactPage")), 1000);
+  });
+})
+const AboutPage = lazy(() => {
+  return new Promise(resolve => {
+    setTimeout(() => resolve(import("./pages/AboutPage")), 1000);
+  });
+})
+const Faq = lazy(() => {
+  return new Promise(resolve => {
+    setTimeout(() => resolve(import("./Components/Faq/Faq")), 1000);
+  });
+}
+)
+
+// actions and loaders
 import { loader as productLoader } from "./pages/ProductsPage"
-import { loadedData as LoadedProducts } from "./pages/ProductsPage"
-import ProductDetails from "./Components/Products/SingleProducts/ProductDetails"
-import AllSubCategoryProducts from "./Components/Products/AllSubCategoryProducts"
-import AllProducts from "./Components/Products/AllProducts"
-import AllHospitalProducts from "./Components/Products/AllHospitalProducts"
-import AdminPage from "./pages/Admin/AdminPage"
-import AddProducts from "./Components/Admin panel/features/AddProducts"
+import { action as ProductUpdate } from "./Components/Admin panel/features/SingleProductEdit"
 import { action as AddProductAction } from "./Components/Admin panel/features/AddProducts"
 import { action as AddCategoryAction } from "./Components/Admin panel/features/AddCategories"
 import { action as AddSubCategoryAction } from "./Components/Admin panel/features/AddSubCategories"
-import AddCategories from "./Components/Admin panel/features/AddCategories"
-import AddSubCategories from "./Components/Admin panel/features/AddSubCategories"
-import AllCategoryProducts from "./Components/Products/AllCategoryProucts"
-import NoSubDetails from "./Components/Products/SingleProducts/NoSubDetails"
-import AllSchoolsProducts from "./Components/Products/AllSchoolsProducts"
-import Services from "./Components/Products/Services"
-import EditProducts from "./Components/Admin panel/features/EditProducts"
-import EditProductPage from "./pages/Admin/EditProductPage"
 
-import { action as ProductUpdate } from "./Components/Admin panel/features/SingleProductEdit"
+// all product components
+const ProductDetails = lazy(() => import("./Components/Products/SingleProducts/ProductDetails"))
+const AllProducts = lazy(() => import("./Components/Products/AllProducts"))
+const AllSubcategories = lazy(() => import("./Components/Products/AllSubcategories"))
+const AllSubCategoryProducts = lazy(() => import("./Components/Products/AllSubCategoryProducts"))
+const AddCategories = lazy(() => import("./Components/Admin panel/features/AddCategories"))
+const AllCategoryProducts = lazy(() => import("./Components/Products/AllCategoryProucts"))
+const AllHospitalProducts = lazy(() => import("./Components/Products/AllHospitalProducts"))
+const NoSubDetails = lazy(() => import("./Components/Products/SingleProducts/NoSubDetails"))
+const AllSchoolsProducts = lazy(() => import("./Components/Products/AllSchoolsProducts"))
+const Services = lazy(() => import("./Components/Products/Services"))
+
+
+// all admin compnents
+const AdminPage = lazy(() => import("./pages/Admin/AdminPage"))
+const AddProducts = lazy(() => import("./Components/Admin panel/features/AddProducts"))
+const AddSubCategories = lazy(() => import("./Components/Admin panel/features/AddSubCategories"))
+const EditProducts = lazy(() => import("./Components/Admin panel/features/EditProducts"))
+const EditProductPage = lazy(() => import("./pages/Admin/EditProductPage"))
+
+import ScaleLoader from "react-spinners/ScaleLoader";
+
+
+
 const router = createBrowserRouter([
   {
     path: "/admin",
     element: <AdminPage />,
     id: "product-loader",
-    loader: LoadedProducts,
+    loader: productLoader,
     children: [
       {
         index: true,
         element: <AddProducts />,
-        loader: LoadedProducts,
         action: AddProductAction
       },
       {
@@ -48,13 +82,11 @@ const router = createBrowserRouter([
       },
       {
         path: "/admin/add-sub-categories",
-        loader: LoadedProducts,
         element: <AddSubCategories />,
         action: AddSubCategoryAction
       },
       {
         path: "/admin/edit",
-        loader: LoadedProducts,
         element: <EditProducts />,
       },
       {
@@ -81,46 +113,41 @@ const router = createBrowserRouter([
           {
             index: true,
             element: <AllProducts />,
-            loader: LoadedProducts,
+            loader: productLoader,
           },
           {
-            path: "allproducts/services-&-maitenance",
+            path: "/allProducts/services-&-maitenance",
             element: <Services />
           },
           {
             path: "/allProducts/:category",
             element: <AllSubcategories />,
-            loader: LoadedProducts,
           },
           {
             path: "/allProducts/:category/all",
             element: <AllCategoryProducts />,
-            loader: LoadedProducts,
           },
           {
             path: "/allProducts/:category/all/:name",
             element: <NoSubDetails />,
-            loader: LoadedProducts
           },
           {
             path: "/allProducts/:category/:subCategory",
             element: <AllSubCategoryProducts />,
-            loader: LoadedProducts
           },
           {
             path: "/allProducts/Hospitality",
             element: <AllHospitalProducts />,
-            loader: LoadedProducts,
           },
           {
             path: "/allProducts/schools&universities",
             element: <AllSchoolsProducts />,
-            loader: LoadedProducts,
+            loader: productLoader,
           },
           {
             path: "/allProducts/:category/:subCategory/:name",
             element: <ProductDetails />,
-            loader: LoadedProducts
+            loader: productLoader
           },
         ]
       },
@@ -142,7 +169,15 @@ const router = createBrowserRouter([
 function App() {
 
   return (
-    <RouterProvider router={router} />
+    <Suspense fallback={<ScaleLoader
+      className="loader"
+      color={"#1d9b47"}
+      size={800}
+      aria-label="Loading Spinner"
+      data-testid="loader"
+    />}>
+      <RouterProvider router={router} />
+    </Suspense >
   )
 }
 

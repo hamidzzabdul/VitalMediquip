@@ -60,7 +60,7 @@ const Categories = ({ categories, subCategories }) => {
                         <li><BiSolidChevronRight /> Schools & university</li>
                     </NavLink>
                 </ul>
-                <NavLink className={`services ${activeCategory === "services-&-maintenance" ? "active" : ""}`} to="allproducts/services-&-maitenance" end onClick={() => handleOnClick("services-&-maintenance")}><BiSolidChevronRight /> Services and Maintenance</NavLink>
+                <NavLink className={`services ${activeCategory === "services-&-maintenance" ? "active" : ""}`} to="/allproducts/services-&-maitenance" end onClick={() => handleOnClick("services-&-maintenance")}><BiSolidChevronRight /> Services and Maintenance</NavLink>
             </div>
         </div >
     )

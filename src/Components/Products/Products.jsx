@@ -9,17 +9,20 @@ import "./Products.scss"
 import Categories from "./Categories"
 import NavRoutes from "./NavRoutes"
 import EnquireForm from "../Common/EnquireForm"
+import CategoriesMobile from "../Common/CategoriesMobile"
 
 
 const Products = ({ categories, subCategories }) => {
-    const allCategories = categories.data.data
-    const allSubCategories = subCategories.data.data
+    const allCategories = categories
+    const allSubCategories = subCategories
 
-    const { showEnquire, toggleModal } = useContext(EnquireContext);
+    const { showEnquire, openEnquireModal, closeModal, openCategoriesModal, showCategories } = useContext(EnquireContext);
+
 
     return (
         <>
-            {showEnquire && <EnquireForm onEnquire={toggleModal} />}
+            {showEnquire && <EnquireForm onEnquire={openEnquireModal} onClose={closeModal} />}
+            {showCategories && <CategoriesMobile categories={allCategories} subCategories={allSubCategories} onOpen={openCategoriesModal} onClose={closeModal} />}
             <div className="products">
                 <h1>Our Products</h1>
                 <NavRoutes />

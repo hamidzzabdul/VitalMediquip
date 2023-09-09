@@ -9,17 +9,18 @@ import { FaInstagram } from "react-icons/fa"
 import { FaLinkedin } from "react-icons/fa"
 
 import RelatedProducts from "../Related Products/RelatedProduct"
-import { useLoaderData, useParams } from "react-router-dom";
+import { useParams, useRouteLoaderData } from "react-router-dom";
 import { useContext } from "react"
 import parse from 'html-react-parser';
 
 const ProductDetails = () => {
     const { selectProduct } = useContext(EnquireContext);
 
-    const { products, subCategories, categories } = useLoaderData()
-    const allproducts = products.data.data
-    const allCategories = categories.data.data
-    const allSubCategories = subCategories.data.data
+    const { data } = useRouteLoaderData("root")
+    const { products, subCategories, categories } = data
+    const allproducts = products
+    const allCategories = categories
+    const allSubCategories = subCategories
 
     const { name, category, subCategory } = useParams()
     const product = allproducts.filter(product => product.slug === name)
@@ -33,7 +34,7 @@ const ProductDetails = () => {
         return <p>No product found with that adress</p>
     }
     const { name: productName, description, productImage } = currentProduct
-    const imageUrl = `http://localhost:3000/${productImage}`;
+    const imageUrl = `https://awful-erin-bandanna.cyclic.app/${productImage}`;
     const renderedDescription = parse(description)
     return (
         <>

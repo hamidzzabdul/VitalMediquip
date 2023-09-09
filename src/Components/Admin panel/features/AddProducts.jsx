@@ -1,6 +1,6 @@
 import { useRef, useState } from 'react';
 
-import { Form, redirect, useLoaderData, useNavigation } from "react-router-dom"
+import { Form, redirect, useLoaderData, useNavigation, useRouteLoaderData } from "react-router-dom"
 import "./AddProducts.scss"
 
 import { ToastContainer, toast } from 'react-toastify';
@@ -11,9 +11,10 @@ import { Editor } from '@tinymce/tinymce-react';
 const AddProducts = () => {
     const editorRef = useRef(null);
 
-    const { subCategories, categories } = useLoaderData()
-    const allSubCategories = subCategories.data.data
-    const allCategories = categories.data.data
+    const { data } = useRouteLoaderData("product-loader")
+    const { subCategories, categories } = data
+    const allSubCategories = subCategories
+    const allCategories = categories
 
 
     const navigation = useNavigation()
@@ -110,7 +111,7 @@ export const action = async ({ request }) => {
     for (const tag of tagArray) {
         productData.append('tags', tag);
     }
-    let url = "http://127.0.0.1:3000/api/v1/products/create-products";
+    let url = "http://localhost:3000/api/v1/products/create-products";
     const response = await fetch(url, {
         method: method,
         body: productData // Remove the "Content-type" header
@@ -118,6 +119,7 @@ export const action = async ({ request }) => {
 
     if (!response.ok) {
         toast.error("Failed, Something bad happened try again");
+        console.log(response)
     } else {
         toast.success("Product added Successfully");
     }

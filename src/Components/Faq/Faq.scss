@@ -2,7 +2,7 @@
 
 .faq-container {
   width: 90%;
-  margin: 100px auto;
+  margin: 50px auto;
 
   .header {
     width: 100%;
@@ -57,29 +57,40 @@
         @media (max-width: 390px) {
           font-size: 0.775rem;
         }
-        .accordion-icon {
-          font-size: 1.4rem;
-          cursor: pointer;
+        .icon {
+          padding: 0.5rem;
+          .accordion-icon {
+            font-size: 24px;
+            cursor: pointer;
+            @media (max-width: 440px) {
+              font-size: 1.3rem;
+            }
+          }
         }
       }
 
       h2 {
         font-size: 1.1rem;
+        @media screen and (max-width: 630px) {
+          font-size: 0.875rem;
+        }
+        @media screen and (max-width: 430px) {
+          font-size: 0.675rem;
+        }
       }
       .content {
         max-height: 0;
         overflow: hidden;
         transition: max-height 500ms ease-in-out;
+        display: flex;
+        flex-direction: column;
         p {
           font-weight: 400;
-          font-size: 0.85rem;
+          font-size: 0.75rem;
           line-height: 26px;
           color: $textColor;
           @media (max-width: 630px) {
-            font-size: 0.875rem;
-          }
-          @media (max-width: 440px) {
-            font-size: 0.875rem;
+            font-size: 0.675rem !important;
           }
         }
         span {

@@ -1,4 +1,4 @@
-import { NavLink, redirect, useLoaderData } from "react-router-dom"
+import { NavLink, useRouteLoaderData } from "react-router-dom"
 import axios from "axios"
 
 import { ToastContainer, toast } from 'react-toastify';
@@ -9,8 +9,9 @@ import { FaSearch } from "react-icons/fa";
 import parser from "html-react-parser"
 
 const EditProducts = () => {
-    const { products } = useLoaderData()
-    const allProducts = products.data.data
+    const { data } = useRouteLoaderData("product-loader")
+    const { products } = data
+    const allProducts = products
 
     const handleDelete = (id) => {
         axios.delete("http://127.0.0.1:3000/api/v1/products/" + id)
@@ -20,7 +21,10 @@ const EditProducts = () => {
                     window.location.reload()
                 }, 3000);
             })
-            .catch(err => toast.err(err.message))
+            .catch(err => {
+                console.log(err)
+                toast.err("an error eccoured")
+            })
 
     }
     return (

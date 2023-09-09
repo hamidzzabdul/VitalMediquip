@@ -10,11 +10,11 @@ import 'react-toastify/dist/ReactToastify.css';
 
 const SingleProductEdit = ({ product, method }) => {
     const editorRef = useRef(null);
-
-    const { products, subCategories, categories } = product
-    const allSubCategories = subCategories.data.data
-    const allCategories = categories.data.data
-    const allProducts = products.data.data
+    const { data } = product
+    const { products, subCategories, categories } = data
+    const allSubCategories = subCategories
+    const allCategories = categories
+    const allProducts = products
 
     const { id } = useParams()
     const currentProduct = allProducts.filter(product => product._id === id)

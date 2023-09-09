@@ -1,12 +1,15 @@
-import { useState } from "react";
-
-import Carousel from "react-multi-carousel";
-import "react-multi-carousel/lib/styles.css";
 import "./Trending.scss"
 import Product from "../../assets/Trending/hametology.jpg"
-import CustomDot from "../UI/CustomDots";
-
 import Button from "../UI/Button"
+
+import { Pagination, Scrollbar, A11y } from 'swiper/modules';
+
+
+import 'swiper/swiper-bundle.css';
+import 'swiper/css';
+import 'swiper/css/navigation';
+
+import { Swiper, SwiperSlide } from 'swiper/react';
 
 const dummyTrending = [
     {
@@ -39,73 +42,65 @@ const dummyTrending = [
         category: "Laboratory",
         name: "Haematology Analyzer"
     },
+    {
+        id: 6,
+        image: Product,
+        category: "Laboratory",
+        name: "Haematology Analyzer"
+    },
+    {
+        id: 7,
+        image: Product,
+        category: "Laboratory",
+        name: "Haematology Analyzer"
+    },
 ]
 
 
 const Trending = () => {
-    const responsive = {
-        superLargeDesktop: {
-            // the naming can be any, depends on you.
-            breakpoint: { max: 4000, min: 3000 },
-            items: 5
-        },
-        desktop: {
-            breakpoint: { max: 3000, min: 1024 },
-            items: 3
-        },
-        tablet: {
-            breakpoint: { max: 1024, min: 600 },
-            items: 2
-        },
-        mobile: {
-            breakpoint: { max: 600, min: 464 },
-            items: 1
-        }
-    };
-    const [activeSlide, setActiveSlide] = useState(0);
-
-    let carouselRef;
-
-
-    const handleBeforeChange = (prevSlide, currentSlide) => {
-        setActiveSlide(currentSlide);
-
-        // If the last item is reached, loop back to the first item
-        if (currentSlide === responsive.desktop.items) {
-            carouselRef.goToSlide(0);
-        }
-    };
-
     return (
         <div className='trending-container section'>
-            <h2>Trending / New</h2>
-            <Carousel
-                ref={(ref) => (carouselRef = ref)}
-                responsive={responsive}
-                showDots={true}
-                swipeable={true}
-                draggable={true}
-                infinite
-                autoPlay
-                autoPlaySpeed={3000}
-                activeIndex={activeSlide}
-                beforeChange={handleBeforeChange}
-                customDot={<CustomDot />}
-                className="trending-carousel">
+            <div className="navigation">
+                <h2>Trending / New</h2>
+            </div>
+            <Swiper
+                modules={[Pagination, Scrollbar, A11y]}
+                spaceBetween={15}
+                slidesPerView={2}
+                pagination={{ clickable: true }}
+                breakpoints={{
+                    950: {
+                        slidesPerView: 4,
+                    },
+                    650: {
+                        slidesPerView: 3,
+                    },
+                    500: {
+                        slidesPerView: 2,
+                    },
+                    450: {
+                        slidesPerView: 1
+                    }
+                }}
+                onSlideChange={() => console.log("slide changed")}
+                className="trending-wrapper"
+            >
                 {dummyTrending.map(obj => {
                     return (
-                        <div key={obj.id} className="single-caraousel">
-                            <img src={obj.image} alt="product" />
+                        <SwiperSlide key={obj.id} className="single-caraousel">
+                            <div className="product-image">
+                                <img src={obj.image} alt="product" />
+                            </div>
                             <div className="product-description">
                                 <p className="category">Laboratory</p>
                                 <p className="name">Haematology Analyzer</p>
-                                <Button label="Read More" className="read-more-btn" />
+                                {/* <Button label="Read More" className="read-more-btn" /> */}
                             </div>
-                        </div>
+                        </SwiperSlide>
                     )
                 })}
-            </Carousel>
-        </div>
+            </Swiper>
+        </div >
     )
 }
 

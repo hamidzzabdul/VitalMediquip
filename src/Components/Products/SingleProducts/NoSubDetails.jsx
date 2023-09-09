@@ -1,4 +1,4 @@
-import { useLoaderData, useParams } from "react-router-dom";
+import { useParams, useRouteLoaderData } from "react-router-dom";
 import { useContext } from "react"
 
 import EnquireContext from "../../../store/EnquireContext";
@@ -17,15 +17,16 @@ import RelatedProducts from "../Related Products/RelatedProduct"
 const NoSubDetails = () => {
     const { selectProduct } = useContext(EnquireContext);
 
-    const { products, categories } = useLoaderData()
-    const allCategories = categories.data.data
+    const { data } = useRouteLoaderData("root")
+    const { products, categories } = data
+    const allCategories = categories
 
     const { category, name } = useParams()
     const selectedCategory = allCategories.find(cat => cat.slug === category)
 
-    const currentProduct = products.data.data.find(product => product.slug === name);
+    const currentProduct = products.find(product => product.slug === name);
 
-    const product = products.data.data.filter(product => product.category === selectedCategory._id)
+    const product = products.filter(product => product.category === selectedCategory._id)
     const relatedProducts = product
 
     if (!product) {
@@ -33,7 +34,7 @@ const NoSubDetails = () => {
     }
 
     const { name: productName, description, productImage } = currentProduct
-    const imageUrl = `http://localhost:3000/${productImage}`;
+    const imageUrl = `https://awful-erin-bandanna.cyclic.app/${productImage}`;
 
     return (
         <>

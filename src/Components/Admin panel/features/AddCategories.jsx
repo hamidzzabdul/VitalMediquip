@@ -1,5 +1,4 @@
-import { useState } from "react";
-import { Form, redirect, useLoaderData, useNavigation } from "react-router-dom"
+import { Form, redirect, useNavigation } from "react-router-dom"
 import "./AddProducts.scss"
 
 import { ToastContainer, toast } from 'react-toastify';
@@ -33,7 +32,7 @@ export const action = async ({ request }) => {
         name: data.get("name"),
     }
 
-    let url = "http://127.0.0.1:3000/api/v1/products/category/create-category"
+    let url = "https://awful-erin-bandanna.cyclic.app/api/v1/products/category/create-category"
     const response = await fetch(url, {
         method: method,
         headers: {

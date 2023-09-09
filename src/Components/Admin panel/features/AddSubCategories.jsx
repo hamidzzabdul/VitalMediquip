@@ -1,4 +1,4 @@
-import { useState } from "react";
+// import { useState } from "react";
 import { Form, redirect, useLoaderData, useNavigation } from "react-router-dom"
 import "./AddProducts.scss"
 
@@ -45,7 +45,7 @@ export const action = async ({ request }) => {
         category: data.get("category"),
     }
 
-    let url = "http://127.0.0.1:3000/api/v1/products/subCategory/create-sub-category"
+    let url = "https://awful-erin-bandanna.cyclic.app/v1/products/subCategory/create-sub-category"
     const response = await fetch(url, {
         method: method,
         headers: {

@@ -3,12 +3,13 @@
 .nav-wrapper {
   position: sticky;
   top: 0;
-  z-index: 999;
+  z-index: 2;
   nav {
     width: 100%;
     margin: 0 auto;
     height: 4.5rem;
     display: flex;
+    overflow: hidden;
     justify-content: center;
     background-color: #fff;
 
@@ -18,7 +19,6 @@
       width: 90%;
       height: inherit;
       position: fixed;
-      z-index: 9999999;
       background: #fff;
       .logo {
         position: absolute;
@@ -46,15 +46,17 @@
       display: flex;
       align-items: center;
       gap: 1rem;
-      .hamburger {
-        display: none;
-        fill: $primaryGreenColor;
-        color: $primaryGreenColor;
-        cursor: pointer;
-        opacity: 1;
-        transition: opacity 0.3s ease-in-out;
-        .hamburger.hidden {
-          opacity: 0;
+      .bars {
+        .hamburger {
+          display: none;
+          fill: $primaryGreenColor;
+          color: $primaryGreenColor;
+          cursor: pointer;
+          opacity: 1;
+          transition: opacity 0.3s ease-in-out;
+          &.hidden {
+            opacity: 0;
+          }
         }
       }
       .nav-items {
@@ -117,9 +119,12 @@
         .get-quote {
           display: none;
         }
-        .hamburger {
-          display: block;
-          font-size: 2rem;
+
+        .bars {
+          .hamburger {
+            display: inline;
+            font-size: 2rem;
+          }
         }
       }
     }

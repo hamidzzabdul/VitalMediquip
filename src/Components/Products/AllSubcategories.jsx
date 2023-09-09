@@ -1,12 +1,13 @@
 import "./AllsubCategories.scss"
 import Sub1 from "../../assets/categories/subcategories/equipments.jpg"
-import { NavLink, useLoaderData, useParams } from "react-router-dom";
+import { NavLink, useParams, useRouteLoaderData } from "react-router-dom";
 
 const AllSubcategories = () => {
-    const { subCategories, categories, products } = useLoaderData()
-    const allSubCategories = subCategories.data.data
-    const allCategories = categories.data.data
-    const allProducts = products.data.data
+    const { data } = useRouteLoaderData("root")
+    const { subCategories, categories, products } = data
+    const allSubCategories = subCategories
+    const allCategories = categories
+    const allProducts = products
     const { category } = useParams()
 
     const selectedCategory = allCategories.find(cat => cat.slug === category)
@@ -26,7 +27,9 @@ const AllSubcategories = () => {
                     return (
                         <NavLink key={obj._id} to={`/allProducts/${selectedCategory.slug}/${obj.slug}`}>
                             <div className='products-container'>
-                                <img src={Sub1} alt="microscope" />
+                                <div className="product-image">
+                                    <img src={Sub1} alt="microscope" />
+                                </div>
                                 <div className="product-details">
                                     <p className="category">{selectedCategory.name}</p>
                                     <p className="sub-category">{obj.name}<br /> <span>({productsForSubcategory.length})</span></p>

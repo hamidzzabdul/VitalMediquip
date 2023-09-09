@@ -1,22 +1,18 @@
-import { Suspense, } from "react"
-import { Await, defer, json, useRouteLoaderData } from "react-router-dom"
+import { json, useRouteLoaderData } from "react-router-dom"
+
 import Products from "../Components/Products/Products"
 import EnquireProvider from "../store/EnquireContextProvider"
 
 const ProductsPage = () => {
-    // const { data } = useLoaderData()
     const { data } = useRouteLoaderData("root")
+    const { categories, subCategories, products } = data
+
+
 
     return (
         <EnquireProvider>
-            <Suspense fallback={<p style={{ textAlign: "center" }}>Loading...</p>}>
-                <Await resolve={data}>
-                    {
-                        (loadedData) => <Products categories={loadedData.categories} products={loadedData.products} subCategories={loadedData.subCategories} />
-                    }
-                </Await>
-            </Suspense >
-        </EnquireProvider>
+            <Products categories={categories} products={products} subCategories={subCategories} />
+        </EnquireProvider >
     )
 }
 
@@ -24,23 +20,14 @@ const ProductsPage = () => {
 
 export default ProductsPage
 
-export const loadedData = async () => {
-    const products = await fetch("http://127.0.0.1:3000/api/v1/products")
-    const categories = await fetch("http://127.0.0.1:3000/api/v1/products/category")
-    const subCategories = await fetch("http://127.0.0.1:3000/api/v1/products/subCategory")
-    if (!products.ok, !categories.ok) {
+export const loader = async () => {
+    const data = await fetch("https://awful-erin-bandanna.cyclic.app/api/v1/products")
+    if (!data.ok) {
         throw json({ message: "Could not fetch documents.." })
     } else {
-        const productResponse = await products.json()
-        const categoryResponse = await categories.json()
-        const subCategoryResponse = await subCategories.json()
-        return { products: productResponse, categories: categoryResponse, subCategories: subCategoryResponse }
+        const res = await data.json()
+        const newRes = res.data.data
+        return { data: newRes }
     }
 
-}
-
-export const loader = async () => {
-    return defer({
-        data: loadedData(),
-    });
 }

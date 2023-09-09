@@ -1,21 +1,24 @@
+/* eslint-disable react/prop-types */
 import { useState } from "react"
-import { NavLink, useLoaderData, useParams } from "react-router-dom"
+import { NavLink, useParams, useRouteLoaderData } from "react-router-dom"
+import { useSearch } from "../../Hooks/UseSearch";
 
 
 import ReactPaginate from 'react-paginate';
 import { BsArrowLeftCircleFill } from "react-icons/bs"
 import { BsFillArrowRightCircleFill } from "react-icons/bs"
 
-import "./AllsubCategories.scss"
+import "./AllSubCategoryProducts.scss"
+import SearchAndFilter from "../Common/SearchAndFilter";
 
 const ITEMS_PER_PAGE = 8
 
 const AllSubCategoryProducts = () => {
-    const { subCategories, categories, products } = useLoaderData()
-
-    const allSubCategories = subCategories.data.data
-    const allCategories = categories.data.data
-    const allProducts = products.data.data
+    const { data } = useRouteLoaderData("root")
+    const { products, subCategories, categories } = data
+    const allSubCategories = subCategories
+    const allCategories = categories
+    const allProducts = products
 
     const { subCategory, category } = useParams()
 
@@ -23,10 +26,12 @@ const AllSubCategoryProducts = () => {
     const selectedCategory = allCategories.find(cat => cat.slug === category)
 
     const [currentPage, setCurrentPage] = useState(0); // Use array destructuring
+    const { searchText, handleSearch } = useSearch("");
 
     const handlePageClick = ({ selected }) => {
         setCurrentPage(selected);
     };
+
 
     const offset = currentPage * ITEMS_PER_PAGE;
 
@@ -34,7 +39,9 @@ const AllSubCategoryProducts = () => {
         return product.subCategory === selectedSubCategory._id;
     });
     const paginatedProducts = productsForSubcategory.slice(offset, offset + ITEMS_PER_PAGE);
-
+    const filteredProduct = paginatedProducts.filter(product =>
+        product.name.toLowerCase().includes(searchText.toLowerCase())
+    );
     const handleOnscroll = () => {
         window.scrollTo({
             top: 0,
@@ -42,24 +49,35 @@ const AllSubCategoryProducts = () => {
         });
     }
     return (
-
-        <div className="product-section">
-            {
-                paginatedProducts.map(obj => {
-                    const imageUrl = `http://localhost:3000/${obj.productImage}`;
-                    return <NavLink key={obj._id} to={`/allProducts/${selectedCategory.slug}/${selectedSubCategory.slug}/${obj.slug}`} target="_blank" rel="noopener noreferrer">
-                        <div className='products-container'>
-                            <img src={imageUrl} alt="microscope" />
-                            <div className="product-details">
-                                <p className="category">{selectedCategory.name}</p>
-                                <p className="sub-category">{obj.name}</p>
-                                <button className="view-product">View Product</button>
-                            </div>
-                        </div>
-                    </NavLink>
-                }
-                )
-            }
+        <div className="all-product-section">
+            <SearchAndFilter onSearch={handleSearch} />
+            <div className="product-wrapper">
+                {searchText === "" ? (
+                    // Display all paginated products
+                    paginatedProducts.map(obj => (
+                        <ProductLink
+                            key={obj._id}
+                            product={obj}
+                            selectedCategory={selectedCategory}
+                            selectedSubCategory={selectedSubCategory}
+                        />
+                    ))
+                ) : (
+                    // Display filtered products based on the search text
+                    filteredProduct.length > 0 ? (
+                        filteredProduct.map(obj => (
+                            <ProductLink
+                                key={obj._id}
+                                product={obj}
+                                selectedCategory={selectedCategory}
+                                selectedSubCategory={selectedSubCategory}
+                            />
+                        ))
+                    ) : (
+                        <p className="nothing-found">No product with that name <br /> try <a href="/contact-us">contacting</a> us for more info</p>
+                    )
+                )}
+            </div>
 
             {productsForSubcategory.length > ITEMS_PER_PAGE && (
                 <div className="paginate">
@@ -76,6 +94,28 @@ const AllSubCategoryProducts = () => {
             )}
         </div>
     )
+}
+
+function ProductLink({ product, selectedCategory, selectedSubCategory }) {
+    const imageUrl = `https://awful-erin-bandanna.cyclic.app/${product.productImage}`;
+
+    return (
+        <NavLink
+            to={`/allProducts/${selectedCategory.slug}/${selectedSubCategory.slug}/${product.slug}`}
+            target="_blank"
+            rel="noopener noreferrer"
+        >
+            <div className='products-container'>
+                <div className="product-image">
+                    <img src={imageUrl} alt="microscope" crossOrigin='anonymous' />
+                </div>
+                <div className="product-details">
+                    <p className="category">{selectedCategory.name}</p>
+                    <p className="sub-category">{product.name}</p>
+                </div>
+            </div>
+        </NavLink>
+    );
 }
 
 export default AllSubCategoryProducts
