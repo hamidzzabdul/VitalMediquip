@@ -9,7 +9,6 @@ export const EnquireProvider = ({ children }) => {
 
     const openEnquireModal = () => {
         setShowEnquire(true); // Open the enquire modal
-        setShowCategories(true)
     };
     const openCategoriesModal = () => {
         setShowCategories(true)
@@ -17,7 +16,7 @@ export const EnquireProvider = ({ children }) => {
 
     const closeModal = () => {
         setShowEnquire(false);
-        setShowCategories(false); // Close both modals
+        setShowCategories(false);
     };
     const selectProduct = (product) => {
         setSelectedProduct(product);

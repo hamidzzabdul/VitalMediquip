@@ -62,7 +62,7 @@ const AllHospitalProducts = () => {
                 paginatedProducts.map(obj => {
                     const categoryName = categoryMap[obj.category] || "unKnown Category";
                     const subCategoryName = subCategoryMap[obj.subCategory] || "unKnown Category";
-                    const imageUrl = `https://awful-erin-bandanna.cyclic.app/${obj.productImage}`;
+                    // const imageUrl = `https://awful-erin-bandanna.cyclic.app/${obj.productImage}`;
 
                     return (
                         <NavLink
@@ -74,7 +74,7 @@ const AllHospitalProducts = () => {
                             }>
                             <div className='products-container'>
                                 <div className="product-image">
-                                    <img src={imageUrl} alt="microscope" />
+                                    <img src={obj.productImage} alt="microscope" />
                                 </div>
                                 <div className="product-details">
                                     <p className="category">{categoryName}</p>

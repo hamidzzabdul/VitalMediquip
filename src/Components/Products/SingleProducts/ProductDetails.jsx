@@ -34,14 +34,13 @@ const ProductDetails = () => {
         return <p>No product found with that adress</p>
     }
     const { name: productName, description, productImage } = currentProduct
-    const imageUrl = `https://awful-erin-bandanna.cyclic.app/${productImage}`;
     const renderedDescription = parse(description)
     return (
         <>
             <div className="product-details">
                 <div className="product">
                     <div className="product-image">
-                        <img src={imageUrl} alt="product" />
+                        <img src={productImage} alt="product" />
                     </div>
                     <div className="product-description">
                         <h1 className="product-name">{productName}</h1>

@@ -1,5 +1,5 @@
 import "./HowItBegan.scss"
-import Ceo from "../../assets/ceo.jpg"
+import Ceo from "../../../public/logo.jpg"
 const HowItBegan = () => {
     return (
         <div className='begining'>

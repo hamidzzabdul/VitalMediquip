@@ -3,7 +3,6 @@ import "./Footer.scss"
 
 import { FaFacebookF, FaTwitter } from "react-icons/fa"
 import { FaInstagram } from "react-icons/fa"
-import { SlSocialTwitter } from "react-icons/sl"
 import { FaLinkedinIn } from "react-icons/fa6"
 import { Link, NavLink } from "react-router-dom"
 import Logo from "../../../public/logo.svg"
@@ -33,47 +32,47 @@ const Footer = () => {
                             <h3>Our Products</h3>
                             <ul>
                                 <li>
-                                    <NavLink to="/allproducts/laboratory" onClick={handleOnclick}>
+                                    <NavLink to="/allProducts/laboratory" onClick={handleOnclick}>
                                         Laboratory
                                     </NavLink>
                                 </li>
                                 <li>
-                                    <NavLink to="/allproducts/general-hospital" onClick={handleOnclick}>
+                                    <NavLink to="/allProducts/general-hospital" onClick={handleOnclick}>
                                         General Hospital
                                     </NavLink>
                                 </li>
                                 <li>
-                                    <NavLink to="/allproducts/theatre-and-icu/all" onClick={handleOnclick}>
+                                    <NavLink to="/allProducts/theatre-and-icu/all" onClick={handleOnclick}>
                                         Theater & ICU
                                     </NavLink>
                                 </li>
                                 <li>
-                                    <NavLink to="/allproducts/physiotherapy-and-orthopedic/all" onClick={handleOnclick}>
+                                    <NavLink to="/allProducts/physiotherapy-and-orthopedic/all" onClick={handleOnclick}>
                                         Physiotherapy
                                     </NavLink>
                                 </li>
                                 <li>
-                                    <NavLink to="/allproducts/dental/all" onClick={handleOnclick}>
+                                    <NavLink to="/allProducts/dental/all" onClick={handleOnclick}>
                                         Dental
                                     </NavLink>
                                 </li>
                                 <li>
-                                    <NavLink to="/allproducts/imaging/all" onClick={handleOnclick}>
+                                    <NavLink to="/allProducts/imaging/all" onClick={handleOnclick}>
                                         Imaging
                                     </NavLink>
                                 </li>
                                 <li>
-                                    <NavLink to="/allproducts/maternity/all" onClick={handleOnclick}>
+                                    <NavLink to="/allProducts/maternity/all" onClick={handleOnclick}>
                                         Maternity
                                     </NavLink>
                                 </li>
                                 <li>
-                                    <NavLink to="/allproducts/Hospitality" onClick={handleOnclick}>
+                                    <NavLink to="/allProducts/Hospitality" onClick={handleOnclick}>
                                         Hospitality
                                     </NavLink>
                                 </li>
                                 <li>
-                                    <NavLink to="/allproducts/schools&universities" onClick={handleOnclick}>
+                                    <NavLink to="/allProducts/schools&universities" onClick={handleOnclick}>
                                         Schools and Universities
                                     </NavLink>
                                 </li>
@@ -83,17 +82,17 @@ const Footer = () => {
                             <h3>Service & maintenance</h3>
                             <ul>
                                 <li>
-                                    <NavLink to="/allproducts/services-&-maintenace">Laboratory machines</NavLink>
+                                    <NavLink to="/allproducts/services-&-maitenance" onClick={handleOnclick}>Laboratory machines</NavLink>
                                 </li>
                                 <li>
-                                    <NavLink to="/allproducts/services-&-maintenace">Dental machines</NavLink>
+                                    <NavLink to="/allproducts/services-&-maitenance " onClick={handleOnclick}>Dental machines</NavLink>
                                 </li>
                                 <li>
-                                    <NavLink to="/allproducts/services-&-maintenace">Theatre & ICU machines</NavLink>
+                                    <NavLink to="/allproducts/services-&-maitenance" onClick={handleOnclick} >Theatre & ICU machines</NavLink>
 
                                 </li>
                                 <li>
-                                    <NavLink to="/allproducts/services-&-maintenace">Radiology machines</NavLink>
+                                    <NavLink to="/allproducts/services-&-maitenance" onClick={handleOnclick} >Radiology machines</NavLink>
                                 </li>
 
                             </ul>
@@ -112,7 +111,7 @@ const Footer = () => {
                                     </NavLink>
                                 </li>
                                 <li>
-                                    <NavLink to="/allproducts" onClick={handleOnclick}>
+                                    <NavLink to="/allProducts" onClick={handleOnclick}>
                                         Products
                                     </NavLink>
                                 </li>

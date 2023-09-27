@@ -60,6 +60,7 @@ const AllCategoryProucts = () => {
                             product={obj}
                             category={category}
                             selectedCategory={selectedCategory}
+                            imageUrl={obj.productImage}
                         />
                     ))
                 )}
@@ -81,8 +82,7 @@ const AllCategoryProucts = () => {
     )
 }
 
-function ProductLink({ product, category, selectedCategory }) {
-    const imageUrl = `https://awful-erin-bandanna.cyclic.app/${product.productImage}`;
+function ProductLink({ product, category, selectedCategory, imageUrl }) {
 
     return (
         <NavLink

@@ -8,13 +8,14 @@ const HomePage = lazy(() => {
   });
 })
 
-const ProductsPage = lazy(() => {
-  return new Promise(resolve => {
-    setTimeout(() => resolve(import("./pages/ProductsPage")), 1000);
-  });
-}
+import ProductsPage from "./pages/ProductsPage";
 
-)
+// const ProductsPage = lazy(() => {
+//   return new Promise(resolve => {
+//     setTimeout(() => resolve(import("./pages/ProductsPage")), 1000);
+//   });
+// }
+
 const ContactPage = lazy(() => {
   return new Promise(resolve => {
     setTimeout(() => resolve(import("./pages/ContactPage")), 1000);
@@ -40,16 +41,16 @@ import { action as AddCategoryAction } from "./Components/Admin panel/features/A
 import { action as AddSubCategoryAction } from "./Components/Admin panel/features/AddSubCategories"
 
 // all product components
-const ProductDetails = lazy(() => import("./Components/Products/SingleProducts/ProductDetails"))
-const AllProducts = lazy(() => import("./Components/Products/AllProducts"))
-const AllSubcategories = lazy(() => import("./Components/Products/AllSubcategories"))
-const AllSubCategoryProducts = lazy(() => import("./Components/Products/AllSubCategoryProducts"))
-const AddCategories = lazy(() => import("./Components/Admin panel/features/AddCategories"))
-const AllCategoryProducts = lazy(() => import("./Components/Products/AllCategoryProucts"))
-const AllHospitalProducts = lazy(() => import("./Components/Products/AllHospitalProducts"))
-const NoSubDetails = lazy(() => import("./Components/Products/SingleProducts/NoSubDetails"))
-const AllSchoolsProducts = lazy(() => import("./Components/Products/AllSchoolsProducts"))
-const Services = lazy(() => import("./Components/Products/Services"))
+import ProductDetails from "./Components/Products/SingleProducts/ProductDetails";
+import AllProducts from "./Components/Products/AllProducts";
+import AllSubcategories from "./Components/Products/AllSubcategories";
+import AllSubCategoryProducts from "./Components/Products/AllSubCategoryProducts";
+import AddCategories from "./Components/Admin panel/features/AddCategories";
+import AllCategoryProducts from "./Components/Products/AllCategoryProucts";
+import AllHospitalProducts from "./Components/Products/AllHospitalProducts";
+import NoSubDetails from "./Components/Products/SingleProducts/NoSubDetails";
+import AllSchoolsProducts from "./Components/Products/AllSchoolsProducts";
+import Services from "./Components/Products/Services";
 
 
 // all admin compnents
@@ -102,7 +103,8 @@ const router = createBrowserRouter([
     children: [
       {
         path: "/",
-        element: <HomePage />
+        element: <HomePage />,
+        loader: productLoader
       },
       {
         path: "/allProducts",

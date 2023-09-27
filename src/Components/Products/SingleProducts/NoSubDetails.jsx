@@ -34,14 +34,14 @@ const NoSubDetails = () => {
     }
 
     const { name: productName, description, productImage } = currentProduct
-    const imageUrl = `https://awful-erin-bandanna.cyclic.app/${productImage}`;
+    // const imageUrl = `https://awful-erin-bandanna.cyclic.app/${productImage}`;
 
     return (
         <>
             <div className="product-details">
                 <div className="product">
                     <div className="product-image">
-                        <img src={imageUrl} alt="product" />
+                        <img src={productImage} alt="product" />
                     </div>
                     <div className="product-description">
                         <h3 className="product-name">{productName}</h3>

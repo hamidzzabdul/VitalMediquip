@@ -97,17 +97,14 @@ const AllSubCategoryProducts = () => {
 }
 
 function ProductLink({ product, selectedCategory, selectedSubCategory }) {
-    const imageUrl = `https://awful-erin-bandanna.cyclic.app/${product.productImage}`;
 
     return (
         <NavLink
             to={`/allProducts/${selectedCategory.slug}/${selectedSubCategory.slug}/${product.slug}`}
-            target="_blank"
-            rel="noopener noreferrer"
         >
             <div className='products-container'>
                 <div className="product-image">
-                    <img src={imageUrl} alt="microscope" crossOrigin='anonymous' />
+                    <img src={product.productImage} alt="microscope" crossOrigin='anonymous' />
                 </div>
                 <div className="product-details">
                     <p className="category">{selectedCategory.name}</p>

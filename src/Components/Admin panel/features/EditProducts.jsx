@@ -12,6 +12,7 @@ const EditProducts = () => {
     const { data } = useRouteLoaderData("product-loader")
     const { products } = data
     const allProducts = products
+    console.log(allProducts)
 
     const handleDelete = (id) => {
         axios.delete("http://127.0.0.1:3000/api/v1/products/" + id)
@@ -37,11 +38,11 @@ const EditProducts = () => {
             {allProducts.length < 1 && <p style={{ textAlign: "center" }}>No Products Available 😥</p>}
             {allProducts.map(product => {
 
-                const imageUrl = `http://localhost:3000/${product.productImage}`;
+                // const imageUrl = `http://localhost:3000/${product.productImage}`;
                 return (
                     <div className="product-container" key={product._id}>
                         <div className="product-details">
-                            <img src={imageUrl} alt="product image" />
+                            <img src={product.productImage} alt="product image" />
                             <div className="product-info">
                                 <p>{product.name}</p>
                                 <p>{parser(product.description)}</p>

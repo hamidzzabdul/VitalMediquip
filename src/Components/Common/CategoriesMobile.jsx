@@ -45,7 +45,7 @@ const CategoriesMobile = ({ onClose, categories, subCategories }) => {
                             <li><BiSolidChevronRight /> Schools & university</li>
                         </NavLink>
                     </ul>
-                    <NavLink onClick={onClose}><BiSolidChevronRight /> Services and Maintenance</NavLink>
+                    <NavLink onClick={onClose} to="/allProducts/services-&-maitenance"><BiSolidChevronRight /> Services and Maintenance</NavLink>
                 </div>
             </Modal>
         </div>

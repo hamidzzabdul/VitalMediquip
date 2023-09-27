@@ -9,7 +9,9 @@ section {
       rgba(0, 0, 0, 0.351)
     ),
     url(../../assets/background2.jpeg);
-  // background-position: center;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
   gap: 1rem;
   position: relative;
 

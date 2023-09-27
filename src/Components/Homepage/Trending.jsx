@@ -1,8 +1,7 @@
+/* eslint-disable react/prop-types */
 import "./Trending.scss"
-import Product from "../../assets/Trending/hametology.jpg"
-import Button from "../UI/Button"
 
-import { Pagination, Scrollbar, A11y } from 'swiper/modules';
+import { Pagination, Scrollbar, A11y, Autoplay } from 'swiper/modules';
 
 
 import 'swiper/swiper-bundle.css';
@@ -10,64 +9,52 @@ import 'swiper/css';
 import 'swiper/css/navigation';
 
 import { Swiper, SwiperSlide } from 'swiper/react';
+import { NavLink } from "react-router-dom";
 
-const dummyTrending = [
-    {
-        id: 1,
-        image: Product,
-        category: "Laboratory",
-        name: "Haematology Analyzer"
-    },
-    {
-        id: 2,
-        image: Product,
-        category: "Laboratory",
-        name: "Haematology Analyzer"
-    },
-    {
-        id: 3,
-        image: Product,
-        category: "Laboratory",
-        name: "Haematology Analyzer"
-    },
-    {
-        id: 4,
-        image: Product,
-        category: "Laboratory",
-        name: "Haematology Analyzer"
-    },
-    {
-        id: 5,
-        image: Product,
-        category: "Laboratory",
-        name: "Haematology Analyzer"
-    },
-    {
-        id: 6,
-        image: Product,
-        category: "Laboratory",
-        name: "Haematology Analyzer"
-    },
-    {
-        id: 7,
-        image: Product,
-        category: "Laboratory",
-        name: "Haematology Analyzer"
-    },
-]
+const Trending = ({ products, categories, subCategories }) => {
+    const trendingProducts = products.slice(0, 16);
 
+    const categoryMap = {}
+    const subCategoryMap = {}
+    const categorySlugs = {}
+    const subCategorySlugs = {}
 
-const Trending = () => {
+    categories.forEach(category => {
+        categoryMap[category._id] = category.name
+    })
+    categories.forEach(category => {
+        categoryMap[category._id] = category.name
+    })
+
+    categories.forEach(category => {
+        categorySlugs[category._id] = category.slug
+    })
+
+    subCategories.forEach(subCategory => {
+        subCategoryMap[subCategory._id] = subCategory.name
+    })
+    subCategories.forEach(subCategory => {
+        subCategorySlugs[subCategory._id] = subCategory.slug
+    })
+    const handleOnscroll = () => {
+        window.scrollTo({
+            top: 0,
+            behavior: "smooth"
+        });
+    }
+
     return (
         <div className='trending-container section'>
             <div className="navigation">
                 <h2>Trending / New</h2>
             </div>
             <Swiper
-                modules={[Pagination, Scrollbar, A11y]}
+                modules={[Autoplay, Pagination, Scrollbar, A11y]}
                 spaceBetween={15}
                 slidesPerView={2}
                 pagination={{ clickable: true }}
+                infinite
+                autoplay
                 breakpoints={{
                     950: {
                         slidesPerView: 4,
@@ -82,20 +69,27 @@ const Trending = () => {
                         slidesPerView: 1
                     }
                 }}
-                onSlideChange={() => console.log("slide changed")}
                 className="trending-wrapper"
             >
-                {dummyTrending.map(obj => {
+                {trendingProducts.map(obj => {
+                    const categoryName = categoryMap[obj.category] || "unknown Category";
+                    const subCategoryName = subCategoryMap[obj.subCategory] || "unknown Category";
+
                     return (
-                        <SwiperSlide key={obj.id} className="single-caraousel">
-                            <div className="product-image">
-                                <img src={obj.image} alt="product" />
-                            </div>
-                            <div className="product-description">
-                                <p className="category">Laboratory</p>
-                                <p className="name">Haematology Analyzer</p>
-                                {/* <Button label="Read More" className="read-more-btn" /> */}
-                            </div>
+                        <SwiperSlide key={obj._id} className="single-caraousel" onClick={handleOnscroll}>
+                            <NavLink to={
+                                subCategoryName === "unknown Category"
+                                    ? `/allProducts/${categorySlugs[obj.category]}/all/${obj.slug}`
+                                    : `/allProducts/${categorySlugs[obj.category]}/${subCategorySlugs[obj.subCategory]}/${obj.slug}`
+                            } className="product-wrapper">
+                                <div className="product-image">
+                                    <img src={obj.productImage} alt="product" crossOrigin="anonymous" />
+                                </div>
+                                <div className="product-description">
+                                    <p className="category">{categoryName}</p>
+                                    <p className="name">{obj.name}</p>
+                                </div>
+                            </NavLink>
                         </SwiperSlide>
                     )
                 })}

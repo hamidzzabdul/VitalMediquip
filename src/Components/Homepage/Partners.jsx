@@ -146,7 +146,6 @@ const Partners = () => {
                             slidesPerView: 2
                         }
                     }}
-                    onSlideChange={() => console.log("slide changed")}
                     className="trending-wrapper"
                 >
 

@@ -76,7 +76,6 @@ const AllProducts = () => {
                         paginatedProducts.map(product => {
                             const categoryName = categoryMap[product.category] || "unknown Category";
                             const subCategoryName = subCategoryMap[product.subCategory] || "unknown Category";
-                            const imageUrl = `https://awful-erin-bandanna.cyclic.app/${product.productImage}`;
 
                             return (
                                 <NavLink
@@ -87,11 +86,9 @@ const AllProducts = () => {
                                             : `/allProducts/${categorySlugs[product.category]}/${subCategorySlugs[product.subCategory]}/${product.slug}`
                                     }
                                     className="all-products-container"
-                                    target="_blank"
-                                    rel="noopener noreferrer"
                                 >
                                     <div className="product-image">
-                                        <img src={imageUrl} alt="microscope" crossOrigin="anonymous" />
+                                        <img src={product.productImage} alt="microscope" crossOrigin="anonymous" />
                                     </div>
                                     <div className="product-detail">
                                         <p className="category">{categoryName}</p>

@@ -18,38 +18,42 @@
       cursor: pointer;
       box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
       transition: all 300ms ease;
-      .product-image {
+      .product-wrapper {
         width: 100%;
-        height: 60%;
-        img {
-          display: flex;
+        height: 70%;
+        .product-image {
           width: 100%;
           height: 100%;
-          object-fit: contain;
+          img {
+            display: flex;
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+          }
         }
-      }
-      .product-description {
-        padding-left: 10px;
-        display: flex;
-        flex-direction: column;
-        gap: 0.5rem;
-        .category {
-          font-size: 0.675rem;
-          color: $textColor;
-          transition: all 300ms ease;
-        }
-        .name {
-          transition: all 300ms ease;
-          font-size: 0.775rem;
-        }
-        .read-more-btn {
-          width: 50%;
-          border: 1px solid $primaryGreenColor;
-          background-color: #fff;
-          padding: 0.5rem;
-          color: #000;
-          cursor: pointer;
-          font-size: 0.675rem;
+        .product-description {
+          padding-left: 10px;
+          display: flex;
+          flex-direction: column;
+          gap: 0.5rem;
+          .category {
+            font-size: 0.675rem;
+            color: $textColor;
+            transition: all 300ms ease;
+          }
+          .name {
+            transition: all 300ms ease;
+            font-size: 0.775rem;
+          }
+          .read-more-btn {
+            width: 50%;
+            border: 1px solid $primaryGreenColor;
+            background-color: #fff;
+            padding: 0.5rem;
+            color: #000;
+            cursor: pointer;
+            font-size: 0.675rem;
+          }
         }
       }
 
