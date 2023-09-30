@@ -52,7 +52,7 @@ const History = () => {
                         <div className="icon">
                             <MdOutlineDriveFileRenameOutline className="hist-icon" />
                         </div>
-                        <h3>Aughust 2023</h3>
+                        <h3>August 2023</h3>
                     </div>
                     <div className="history-description">
                         <p>Officially changed our name from Vitol Agencies Limited to Vital Mediquip, reflecting our dedication to providing vital medical equipment and supplies to valued customers in East Africa.</p>
