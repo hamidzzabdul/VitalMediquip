@@ -9,6 +9,12 @@
   gap: 1rem;
   row-gap: 2rem;
 
+  @media (max-width: 1370px) {
+    grid-template-columns: repeat(4, 1fr);
+  }
+  @media (max-width: 1170px) {
+    grid-template-columns: repeat(3, 1fr);
+  }
   @media (max-width: 1110px) {
     width: 90%;
   }
